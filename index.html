@@ -3,30 +3,39 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>고향온 광주서구 SB — 전 페이지 통합 (sb2)</title>
+<title>고향온 SB — 변경분(DELTA) 전용 · sb2</title>
 <style>
   *{box-sizing:border-box;margin:0;padding:0;font-family:-apple-system,'Pretendard',sans-serif;}
   body{background:#e8eaed;color:#212529;padding:48px 20px;}
-  .wrap{max-width:720px;margin:0 auto;}
+  .wrap{max-width:760px;margin:0 auto;}
   h1{font-size:22px;font-weight:800;margin-bottom:8px;}
-  p.sub{color:#6b7280;font-size:14px;margin-bottom:28px;line-height:1.6;}
-  .card{display:block;background:#fff;border:1px solid #d0d4d9;border-radius:12px;padding:22px 24px;margin-bottom:14px;text-decoration:none;color:inherit;box-shadow:0 4px 16px rgba(0,0,0,.05);}
+  p.sub{color:#6b7280;font-size:14px;margin-bottom:24px;line-height:1.6;}
+  .delta{background:#b5651d;color:#fff;border-radius:10px;padding:14px 18px;font-size:13.5px;line-height:1.7;margin-bottom:22px;}
+  .card{display:block;background:#fff;border:1px solid #d0d4d9;border-radius:12px;padding:20px 24px;margin-bottom:14px;text-decoration:none;color:inherit;box-shadow:0 4px 16px rgba(0,0,0,.05);}
   .card:hover{border-color:#2b2f36;}
   .card .t{font-size:17px;font-weight:700;}
   .card .d{font-size:13px;color:#6b7280;margin-top:5px;}
-  .note{margin-top:24px;font-size:12.5px;color:#6b7280;background:#fff;border:1px solid #d0d4d9;border-radius:10px;padding:14px 16px;line-height:1.7;}
-  .note b{color:#212529;}
+  .note{margin-top:18px;font-size:12.5px;color:#6b7280;background:#fff;border:1px solid #d0d4d9;border-radius:10px;padding:14px 16px;line-height:1.7;}
+  .note b{color:#212529;} ul{margin:6px 0 0 18px;} li{margin:3px 0;}
 </style>
 </head>
 <body>
   <div class="wrap">
-    <h1>고향온 · 광주 서구 화면설계서 (sb2)</h1>
-    <p class="sub">전 페이지 세로 적층 · Figma html.to.design 단일 import용 · 이미지=회색 와이어프레임</p>
-    <a class="card" href="all_pc.html"><div class="t">▸ 전체 화면 (PC)</div><div class="d">all_pc.html — PC 전 페이지 통합</div></a>
-    <a class="card" href="all_mo.html"><div class="t">▸ 전체 화면 (MO)</div><div class="d">all_mo.html — 모바일 전 페이지 통합</div></a>
+    <h1>고향온 · 광주 서구 SB — 변경분(DELTA) 전용</h1>
+    <p class="sub">이전 SB 대비 <b>2026-06-30 수정된 화면만</b> 추출. 미수정 화면은 제외 → Figma 증분 import용.</p>
+    <div class="delta">⚠️ 이 레포는 <b>delta(변경분) 전용</b>입니다. 전체 화면본은 <b>gohyangon_sb</b>(별도)에 있습니다.</div>
+    <a class="card" href="all_pc.html"><div class="t">▸ 변경 화면 (PC) · 6장</div><div class="d">all_pc.html</div></a>
+    <a class="card" href="all_mo.html"><div class="t">▸ 변경 화면 (MO) · 5장</div><div class="d">all_mo.html</div></a>
     <div class="note">
-      <b>import 방법</b>: html.to.design 무료 티어로 <b>all_pc.html · all_mo.html 각 1회씩(총 2회)</b> Vercel URL import → Figma 세부수정.<br>
-      <b>최근 갱신(2026-06-30)</b>: SR-01 검색 무결과 화면 강화(추천 답례품 + 진행 기부사업 발견 면, PC/MO) · MY-01 카운트 타일 목적지 정의 · MO 하단탭 '상품검색'→'검색' 정합.
+      <b>포함된 변경 화면</b>:
+      <ul>
+        <li><b>SR-01 검색 결과</b> — 필터 복원(자치단체·기부금액·가격대) <span style="color:#999">[PC·MO]</span></li>
+        <li><b>SR-01 검색 무결과</b> — 추천 답례품 + 진행 기부사업 발견 면 <span style="color:#999">[PC·MO신규]</span></li>
+        <li><b>CA-01 전체 카테고리</b> — 2depth→1depth(지정기부→기부사업) <span style="color:#999">[PC·MO]</span></li>
+        <li><b>CAT 1뎁스 팝업</b> — 9 대분류 + 기부사업 통일 <span style="color:#999">[PC]</span> / MO는 ≡ 드로어</li>
+        <li><b>MY-01 마이페이지</b> — 카운트 타일 목적지 + 배송지관리 회원정보 편입 <span style="color:#999">[PC 데이터·빈상태 / MO]</span></li>
+      </ul>
+      <b>import</b>: all_pc · all_mo 각 1회. <b>※ MO 하단탭 '검색' 라벨 변경(E2)은 다른 화면에도 적용됐으나, 그 화면들은 delta에서 제외됨</b>(필요 시 전체본 재import).
     </div>
   </div>
 </body>
