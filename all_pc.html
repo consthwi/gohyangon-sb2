@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>고향온 디자이너용 SB — 전 페이지 (PC) · 단일 import</title>
+<title>고향온 SB — 변경분(DELTA) 전용 · sb2 (PC)</title>
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { box-sizing:border-box; margin:0; padding:0; font-family:'Pretendard',-apple-system,sans-serif; }
@@ -352,6 +352,47 @@
   .authnote{ display:block; border:1px solid #cfe0cf; background:#f1f8f1; border-radius:8px; padding:11px; text-align:center; font-size:13px; color:#2e7d4f; font-weight:600; }
   /* SG-02 탭 패널 (사업소개/기부내역/응원하기 — 진짜 탭, 1개만 노출) */
   .sgpanel{ padding:16px 2px 4px; } .sgpanel.alt{ opacity:.5; } .sgpanel .ptag{ display:inline-block; font-size:11px; font-weight:800; color:#7a8089; background:#f1f2f4; border-radius:5px; padding:2px 9px; margin-bottom:9px; }
+  .note{ font-size:12.5px; color:var(--sub); line-height:1.65; margin-top:10px; }
+
+  /* ===== [추가 2026-06-30] 지정기부 플로우맵 (정책 반전: 답례품 선택 / 답례품 없이 2분기) ===== */
+  .pageblock.p-flow{ background:#e6ebf1; }
+  .fmap{ width:100%; max-width:1280px; background:#fff; border:1px solid var(--line); border-radius:12px; padding:30px 26px 36px; }
+  .fmap .fttl{ font-size:19px; font-weight:800; margin-bottom:5px; }
+  .fmap .fsub{ font-size:12.5px; color:var(--sub); margin-bottom:18px; line-height:1.65; }
+  .flegend{ display:flex; flex-wrap:wrap; gap:8px 16px; font-size:11.5px; color:var(--sub); margin-bottom:24px; padding:10px 14px; background:#f5f6f8; border:1px solid var(--line); border-radius:8px; }
+  .flegend span{ display:inline-flex; align-items:center; }
+  .flegend i{ display:inline-block; width:22px; height:13px; border-radius:3px; vertical-align:middle; margin-right:6px; border:1.5px solid var(--accent); }
+  .flegend i.scr{ border-color:#4d535b; } .flegend i.pop{ border-style:dashed; border-color:#7c5cbf; } .flegend i.entry{ border-color:#9aa0a8; background:#f5f6f8; } .flegend i.split{ border-color:#c98a00; background:#fff8e6; } .flegend i.term{ border-color:#2e7d4f; } .flegend i.gd{ border-color:#b3261e; background:#fbeeec; }
+  .fcol{ display:flex; flex-direction:column; align-items:center; gap:0; }
+  .fnode{ width:308px; border:1.5px solid var(--accent); border-radius:10px; background:#fff; padding:11px 14px; text-align:center; box-shadow:0 2px 8px rgba(0,0,0,.05); }
+  .fnode .fid{ display:inline-block; font-size:10.5px; font-weight:800; color:#fff; background:var(--accent); border-radius:4px; padding:1px 8px; margin-bottom:5px; }
+  .fnode .fnm{ font-size:14px; font-weight:700; line-height:1.4; }
+  .fnode .fdt{ font-size:11px; color:var(--sub); margin-top:5px; line-height:1.5; }
+  .fnode.scr{ border-color:#4d535b; } .fnode.scr .fid{ background:#4d535b; }
+  .fnode.pop{ border-style:dashed; border-color:#7c5cbf; } .fnode.pop .fid{ background:#7c5cbf; }
+  .fnode.entry{ border-color:#9aa0a8; background:#f5f6f8; } .fnode.entry .fid{ background:#9aa0a8; }
+  .fnode.split{ border:2px solid #c98a00; background:#fff8e6; } .fnode.split .fid{ background:#c98a00; }
+  .fnode.term{ border-color:#2e7d4f; } .fnode.term .fid{ background:#2e7d4f; }
+  .fnode.gd{ border-color:#b3261e; background:#fbeeec; } .fnode.gd .fid{ background:#b3261e; }
+  .farr{ width:2px; height:28px; background:#aab0b8; position:relative; flex:none; margin:2px 0; }
+  .farr::after{ content:'▼'; position:absolute; bottom:-5px; left:-5px; color:#aab0b8; font-size:11px; }
+  .fsplit{ display:flex; gap:26px; align-items:stretch; justify-content:center; width:100%; max-width:880px; }
+  .flane{ display:flex; flex-direction:column; align-items:center; flex:1; max-width:360px; border:1px dashed #c7ccd3; border-radius:12px; padding:14px 12px 18px; background:#fbfcfd; }
+  .fbranch{ font-size:13px; font-weight:800; color:#fff; border-radius:6px; padding:6px 16px; margin-bottom:6px; text-align:center; }
+  .fbranch.a{ background:var(--accent); } .fbranch.b{ background:#7c5cbf; }
+  .fbranch small{ display:block; font-weight:600; font-size:10.5px; opacity:.9; margin-top:2px; }
+  .fmergebar{ width:100%; max-width:760px; text-align:center; margin:20px 0 6px; font-size:12px; font-weight:800; color:#5e636b; }
+  .fdecide{ display:flex; gap:14px; justify-content:center; align-items:flex-start; flex-wrap:wrap; width:100%; max-width:860px; margin-top:2px; }
+  .fcall{ width:308px; background:#fff8e1; border:1px solid #e7d68a; border-left:4px solid #e0a200; border-radius:8px; padding:9px 12px; font-size:11.5px; line-height:1.6; color:#5f4b10; margin:8px 0 0; text-align:left; }
+  .fcall b{ color:#7a5a00; } .fcall .ct{ display:block; font-weight:800; color:#a87800; font-size:11px; margin-bottom:3px; letter-spacing:.2px; }
+  /* 정책반전 고려사항 레지스터 (표) */
+  table.reg{ width:100%; max-width:1280px; border-collapse:collapse; font-size:12px; background:#fff; }
+  table.reg th{ background:var(--dark); color:#fff; padding:9px 10px; text-align:left; font-size:11.5px; border:1px solid var(--dark); }
+  table.reg td{ padding:9px 10px; border:1px solid var(--line); vertical-align:top; line-height:1.6; }
+  table.reg .n{ color:var(--accent); font-weight:800; text-align:center; width:24px; }
+  table.reg .ar{ font-weight:700; width:150px; }
+  .rs{ display:inline-block; font-size:10px; font-weight:800; padding:1.5px 7px; border-radius:4px; color:#fff; white-space:nowrap; }
+  .rs.ok{ background:#2e7d4f; } .rs.dev{ background:#4d535b; } .rs.bo{ background:#7c5cbf; } .rs.hold{ background:#c98a00; }
 </style>
 </head>
 <body>
@@ -361,7 +402,7 @@
 <div style="background:#1f6f4a;color:#fff;padding:18px 22px;font-family:'Pretendard',-apple-system,sans-serif;">
   <div style="font-size:18px;font-weight:800;">고향온 PC SB — 2026-06-30 변경분만 (sb2 델타)</div>
   <div style="font-size:12.5px;opacity:.92;margin-top:6px;line-height:1.6;">
-    이번 라운드 PC 변경 = <b>SG-02 지정기부 상세</b>(사업소개/기부내역/응원하기 <b>진짜 탭</b>으로 통일). 그 외 PC 화면은 미수정 → 제외.<br>
+    이번 라운드 PC 변경 = <b>SG-02 지정기부 상세</b>(진짜 탭 통일) + <b>🔄 답례품 옵션 정책 반전</b>(2026-06-30): 지정기부 = <b>[답례품 선택 후 기부] / [답례품 없이 기부] 2버튼</b> 채택. 추가 = <b>답례품 리스트 팝업·순수기부 팝업·지정기부 플로우맵·고려사항 레지스터</b>. 그 외 PC 화면 미수정 → 제외.<br>
     전체 화면본은 <b>gohyangon_sb</b>(별도 repo).
   </div>
 </div>
@@ -382,7 +423,11 @@
             <div class="fdesc smp">거동이 불편한 장애인 이웃에게 깨끗한 일상을. 여러분의 기부가 모여 세탁 서비스를 넓힙니다.<sup>샘플</sup></div>
             <div class="track"><i style="width:40%"></i></div>
             <div class="fmeta"><span><b class="fpct smp">40%</b> 달성 · <span class="smp">20,000,000원 / 50,000,000원<sup>샘플·e음</sup></span></span><span class="smp">D-60<sup>샘플</sup></span></div>
-            <div class="fbtn">이 사업에 기부하기 →</div>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <div class="fbtn">답례품 선택 후 기부 →</div>
+              <div class="fbtn" style="background:#fff;color:var(--accent);border:1.5px solid var(--accent);">답례품 없이 기부</div>
+            </div>
+            <div style="font-size:11.5px;color:var(--sub);line-height:1.55;">🔄 <b>2026-06-30 정책 반전</b>: 구 단일 [기부하기] → <b>위기브/웰로식 2버튼</b>. ‘답례품 선택 후 기부’→답례품 리스트 팝업→답례품 상세(RT-04, 이 지정기부 바인딩) / ‘답례품 없이 기부’→순수 금액입력 팝업. (제도상 지정기부도 답례품 권리)</div>
           </div>
         </div>
       </div></div>
@@ -416,12 +461,154 @@
     <div class="desc-col"><div class="desc"><h3>Description — SG-02 지정기부 상세(모금) (PC)</h3>
       <table class="d">
         <tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr>
-        <tr><td class="n">2</td><td class="area">모금 현황(hero)</td><td><span class="badge b-fix">확정</span>사업명·지역·대표이미지·<b>달성률·모금액/목표·D-day</b>·<b>[기부하기]</b>. 모금 수치=<b>e음 API 단일소스</b>. 참여→PA(기부용도=지정기부).</td></tr>
+        <tr><td class="n">2</td><td class="area">모금 현황(hero)</td><td><span class="badge b-fix">확정</span>사업명·지역·대표이미지·<b>달성률·모금액/목표·D-day</b>·<b>[답례품 선택 후 기부] / [답례품 없이 기부] 2버튼</b>. 모금 수치=<b>e음 API 단일소스</b>. 참여→PA(기부용도=지정기부).</td></tr>
+        <tr><td class="n">2★</td><td class="area">🔄 답례품 옵션 분기 (2026-06-30 반전)</td><td><span class="badge b-fix">확정 06-30</span><b>[답례품 선택 후 기부]</b>→ 이 지정기부에 묶인 <b>답례품 리스트 팝업</b>→ 답례품 클릭→ <b>답례품 상세(RT-04) + 이 지정기부 바인딩</b>(donationId earmark) → 결제. <b>[답례품 없이 기부]</b>→ <b>순수기부 금액입력 팝업</b>→ 결제. 구 ‘답례품 없음·단일버튼’ 폐기(회의 결정 아닌 전임자 빌드 기조). 근거=위기브 클리핑 0630. <b>플로우 전체 = 아래 ‘지정기부 플로우맵’ 참조.</b></td></tr>
         <tr><td class="n">3</td><td class="area">사업소개 탭</td><td><span class="badge b-fix">확정</span><b>e음 업로드 이미지 1장</b>(ilovegohyang.go.kr) 그대로 출력. <b>우리 BO 수정 불가.</b></td></tr>
         <tr><td class="n">4·5</td><td class="area">기부내역·응원하기</td><td><span class="badge b-fix">확정</span>참여자 목록(마스킹)·응원 메시지(기부완료 시 입력). <span class="badge b-bo">e음/집계</span>.</td></tr>
         <tr><td class="n">—</td><td class="area">★기부사업 상세(EV-02)와 구분</td><td><span class="badge b-open">기획</span><b>SG-02(이 화면)=e음 모금</b>(이미지·달성률·기부하기, 우리 수정 불가) / <b>EV-02 기부사업 상세=우리 BO 이야기</b>(개요·내용·운영현황·영상, 텍스트·수정 가능). <b>진입</b>: 기부사업 §모금 카드 → SG-02 / 기부사업 이야기 상세(EV-02) [기부하기] → SG-02. 근거 [[20260627] e음 지정기부 API 실측.</td></tr>
       </table>
     </div></div>
+  </div>
+</div>
+
+<!-- =================================================================== -->
+<!-- [추가 2026-06-30] 지정기부 답례품 옵션 분기 — 팝업 2종 + 플로우맵 + 레지스터 -->
+<!-- =================================================================== -->
+
+<!-- COMPONENT · 답례품 리스트 팝업 (지정기부 바인딩) [신규] -->
+<div class="pageblock p-fund">
+  <div class="inner">
+    <div class="plabel" style="background:#39314a;"><span class="id" style="background:#7c5cbf;">신규</span> 답례품 리스트 팝업 (지정기부 바인딩) <small>PC · SG-02 [답례품 선택 후 기부] 클릭 시 · 신규(2026-06-30 정책 반전)</small></div>
+    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-30</b> <span class="who">(출처: 위기브 클리핑 0630 · 고향온 지정기부 정책)</span></span><span class="it">디자인 <span class="st wait">대기</span></span><span class="it">퍼블 <span class="st wait">대기</span> <span class="who">P2</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">지정기부↔답례품 풀(BO)</span></span></div>
+    <div class="popwrap" style="min-height:580px;">
+      <div class="dim">
+        <div style="width:780px;max-width:94%;background:#fff;border-radius:16px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.45);">
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);">
+            <b style="font-size:16px;" class="smp">천원세탁 모금<sup>샘플</sup> · 답례품 선택</b>
+            <span style="display:flex;gap:12px;align-items:center;"><span style="font-size:12px;color:var(--sub);border:1px solid var(--line);border-radius:7px;padding:5px 10px;">판매인기순 ▾</span><span style="font-size:18px;color:#888;">✕</span></span>
+          </div>
+          <div style="padding:18px 20px;max-height:440px;overflow:auto;">
+            <div class="note" style="margin:0 0 14px;">이 지정기부에 기부하면서 받을 답례품을 선택하세요. 답례품 클릭 시 상세로 이동하며 <b>해당 지정기부에 기부하는 상태로 바인딩</b>됩니다.</div>
+            <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:14px;">
+              <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">서구_협력사<sup>샘플</sup></div><div class="pname smp">한우 실속 선물세트<sup>샘플</sup></div><div class="pprice smp">100,000원<sup>샘플</sup> <em>부터 기부</em></div><div class="pmeta"><span class="gtag">#한우</span><span class="gtag">#광주서구</span></div></div></div>
+              <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">서구_협력사<sup>샘플</sup></div><div class="pname smp">국산 참기름 세트<sup>샘플</sup></div><div class="pprice smp">100,000원<sup>샘플</sup> <em>부터 기부</em></div><div class="pmeta"><span class="gtag">#참기름</span><span class="gtag">#국산</span></div></div></div>
+              <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">서구_협력사<sup>샘플</sup></div><div class="pname smp">친환경 쌀 10kg<sup>샘플</sup></div><div class="pprice smp">100,000원<sup>샘플</sup> <em>부터 기부</em></div><div class="pmeta"><span class="gtag">#쌀</span><span class="gtag">#친환경</span></div></div></div>
+              <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">서구_협력사<sup>샘플</sup></div><div class="pname smp">지역상품권 3만원권<sup>샘플</sup></div><div class="pprice smp">100,000원<sup>샘플</sup> <em>부터 기부</em></div><div class="pmeta"><span class="gtag">#상품권</span><span class="gtag">#지역화폐</span></div></div></div>
+              <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">서구_협력사<sup>샘플</sup></div><div class="pname smp">전통 김치 5kg<sup>샘플</sup></div><div class="pprice smp">100,000원<sup>샘플</sup> <em>부터 기부</em></div><div class="pmeta"><span class="gtag">#김치</span><span class="gtag">#전통</span></div></div></div>
+              <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">서구_협력사<sup>샘플</sup></div><div class="pname smp">건강 홍삼 세트<sup>샘플</sup></div><div class="pprice smp">100,000원<sup>샘플</sup> <em>부터 기부</em></div><div class="pmeta"><span class="gtag">#홍삼</span><span class="gtag">#건강</span></div></div></div>
+            </div>
+            <div style="text-align:center;margin-top:16px;"><span style="display:inline-block;border:1px solid var(--line);border-radius:8px;padding:10px 28px;font-size:13px;font-weight:700;color:#555;">더보기 +</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="note">📌 SG-02 <b>[답례품 선택 후 기부]</b> 클릭 시 노출. 이 지정기부에 묶인 답례품 카드(이미지·답례품명·‘N원부터 기부’·해시태그·정렬·더보기). 카드 클릭 → <b>답례품 상세(RT-04) + 해당 지정기부 바인딩</b>(donationId 캐리, 위기브 <code>goodsView?donationId=</code> 패턴). 🔲 <b>답례품 풀</b>(서구 답례품 전체 vs 지정기부별 BO 큐레이션) = BO 확인. 위기브 실증(클리핑 이미지2).</div>
+  </div>
+</div>
+
+<!-- COMPONENT · 순수기부 금액입력 팝업 (답례품 없이 기부) [위기브식 정합] -->
+<div class="pageblock p-fund">
+  <div class="inner">
+    <div class="plabel" style="background:#39314a;"><span class="id" style="background:#7c5cbf;">공통</span> 순수기부 금액입력 팝업 (답례품 없이 기부) <small>PC · SG-02·자치단체·집행형 [답례품 없이 기부] 클릭 시 · 2026-06-30 정합</small></div>
+    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-30</b> <span class="who">(출처: 고향온 지정기부 정책 — 순수기부 팝업)</span></span><span class="it">디자인 <span class="st wait">대기</span></span><span class="it">퍼블 <span class="st wait">대기</span> <span class="who">P2</span></span></div>
+    <div class="popwrap" style="min-height:540px;">
+      <div class="dim">
+        <div class="recvbox" style="width:470px;text-align:left;">
+          <h3 style="text-align:center;">기부 금액 입력</h3>
+          <p style="text-align:center;">답례품 없이 순수 기부로 참여합니다.</p>
+          <div style="margin-top:18px;">
+            <label style="font-size:13px;color:var(--sub);display:block;margin-bottom:8px;">빠른 선택</label>
+            <div class="payselect"><span class="p">10,000원</span><span class="p on">30,000원</span><span class="p">50,000원</span><span class="p">100,000원</span></div>
+          </div>
+          <div style="margin-top:14px;">
+            <label style="font-size:13px;color:var(--sub);display:block;margin-bottom:6px;">직접 입력</label>
+            <input class="lpf" style="margin-bottom:0;" placeholder="금액을 입력하세요 (원)">
+          </div>
+          <div class="limitbox" style="margin-top:14px;background:#fff4e0;border-color:#e7c98a;">ⓘ <b>답례품 없이 기부 시, 기부 이후에는 답례품을 선택할 수 없습니다.</b> 답례품을 받으시려면 [답례품 선택 후 기부]로 진행해 주세요.</div>
+          <div style="margin-top:10px;"><a style="font-size:12.5px;color:#2f6db0;font-weight:700;">광주 서구 답례품 바로가기 ›</a></div>
+          <div class="acts" style="display:flex;gap:10px;margin-top:18px;"><a style="flex:1;border:1px solid var(--line);border-radius:8px;padding:13px;text-align:center;font-weight:700;">취소</a><a class="primary" style="flex:1;background:var(--accent);color:#fff;border-radius:8px;padding:13px;text-align:center;font-weight:800;">기부하기</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="note">📌 <b>[답례품 없이 기부]</b> 경로 공통 팝업 — 적용: <b>지정기부(모금형 SG)·자치단체(GU-01)·집행형 기부사업</b>. 금액=정액 빠른선택(1/3/5/10만)+자유입력, <b>한도조회 연동</b>. <b>🔄 문구 정합(2026-06-30)</b>: 구 포괄 “지정기부는 답례품 미증정” 모달은 <b>새 정책과 충돌</b>(지정기부도 답례품 선택 가능) → 위기브식 <b>‘답례품 없이’ 분기 전용 안내</b>(“기부 후 답례품 선택 불가” + 답례품 바로가기)로 격하. [기부하기]→약관동의→한도조회→결제(PA-2xx).</div>
+  </div>
+</div>
+
+<!-- =================================================================== -->
+<!-- FLOW · 지정기부 플로우맵 (답례품 선택 / 답례품 없이 2분기) — Figma import용 -->
+<!-- =================================================================== -->
+<div class="pageblock p-flow">
+  <div class="inner">
+    <div class="plabel"><span class="id">FLOW</span> 지정기부 플로우맵 — 답례품 선택 / 답례품 없이 2분기 <small>PC · 2026-06-30 정책 반전 반영 · Figma import용</small></div>
+    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-30</b> <span class="who">(정책 반전 반영 — 위기브식 2버튼)</span></span><span class="it">디자인 <span class="st wait">대기</span></span><span class="it">퍼블 <span class="st wait">대기</span> <span class="who">P2</span></span></div>
+    <div class="fmap">
+      <div class="fttl">지정기부 기부 플로우 — 답례품 선택 후 기부 · 답례품 없이 기부</div>
+      <div class="fsub">2026-06-30 정책 반전 반영. 구 단일 [기부하기]·‘답례품 없음’(전임자 빌드 기조·회의 결정 부재)은 폐기 → 위기브/웰로식 2버튼. 두 분기가 ‘약관동의→한도조회→결제’ 공통 꼬리로 합류.</div>
+      <div class="flegend"><span><i class="scr"></i>화면(페이지)</span><span><i class="pop"></i>팝업</span><span><i class="entry"></i>진입</span><span><i class="split"></i>분기점</span><span><i class="term"></i>완료</span><span><i class="gd"></i>차단(가드)</span></div>
+      <div class="fcol">
+        <div class="fnode entry"><span class="fid">진입</span><div class="fnm">기부사업(EV-01) §모금 카드 / 기부사업 상세(EV-02) [기부하기] / 통합검색 지정기부 탭</div></div>
+        <div class="farr"></div>
+        <div class="fnode scr"><span class="fid">SG-01</span><div class="fnm">지정기부 목록</div><div class="fdt">D-day·달성률·모금상태(진행중/종료)</div></div>
+        <div class="farr"></div>
+        <div class="fnode split"><span class="fid">SG-02 ★분기점</span><div class="fnm">지정기부 상세 (모금)</div><div class="fdt">모금현황 + 사업소개·기부내역·응원하기 탭<br><b>[답례품 선택 후 기부] · [답례품 없이 기부]</b></div></div>
+        <div class="farr"></div>
+        <div class="fsplit">
+          <div class="flane">
+            <div class="fbranch a">Ⓐ 답례품 선택 후 기부<small>답례품을 받으며 기부</small></div>
+            <div class="farr"></div>
+            <div class="fnode pop"><span class="fid">팝업·신규</span><div class="fnm">답례품 리스트 팝업</div><div class="fdt">이 지정기부에 묶인 답례품 카드(정렬·더보기)</div></div>
+            <div class="farr"></div>
+            <div class="fnode scr"><span class="fid">RT-04 ⚑</span><div class="fnm">답례품 상세 · 지정기부 바인딩</div><div class="fdt">donationId 캐리 · 옵션 1개 선택 · 기부금액=답례품가</div></div>
+            <div class="fcall"><span class="ct">⚑ 바인딩 진입</span>일반 답례품 진입과 달리 <b>어느 지정기부에 기부하는지 표기</b>(배지·브레드크럼) + 결제 시 그 지정기부로 <b>earmark</b>. 캐리 방식(URL/세션)·UI 차이 개발 확인.</div>
+            <div class="farr"></div>
+            <div class="fnode" style="border-color:#4d535b;"><span class="fid" style="background:#4d535b;">CTA</span><div class="fnm">[기부하기]</div></div>
+          </div>
+          <div class="flane">
+            <div class="fbranch b">Ⓑ 답례품 없이 기부<small>순수 기부금만</small></div>
+            <div class="farr"></div>
+            <div class="fnode pop"><span class="fid">팝업</span><div class="fnm">순수기부 금액입력 팝업</div><div class="fdt">정액 빠른선택+자유입력 · “기부 후 답례품 선택 불가” 안내 + 답례품 바로가기</div></div>
+            <div class="fcall"><span class="ct">🔄 문구 정합</span>구 포괄 “지정기부=답례품 미증정” 모달은 폐기 → ‘답례품 없이’ <b>분기 전용 안내</b>로 격하(위기브식).</div>
+            <div class="farr"></div>
+            <div class="fnode" style="border-color:#7c5cbf;"><span class="fid" style="background:#7c5cbf;">CTA</span><div class="fnm">[기부하기]</div></div>
+          </div>
+        </div>
+        <div class="fmergebar">⌄ 두 분기 합류 — 공통 결제 꼬리 ⌄</div>
+        <div class="fnode pop"><span class="fid">팝업</span><div class="fnm">주문 약관동의 (RT-04-01-01)</div><div class="fdt">5필수 동의</div></div>
+        <div class="farr"></div>
+        <div class="fnode pop"><span class="fid">팝업</span><div class="fnm">주소지·기부 한도 조회 (행안부 e음)</div><div class="fdt">주민번호 → 가능 여부·연간 잔여 한도</div></div>
+        <div class="farr"></div>
+        <div class="fdecide">
+          <div class="fcol"><div class="fnode gd"><span class="fid">차단</span><div class="fnm">거주지 기부불가 모달</div><div class="fdt">본인 주소지 지자체</div></div></div>
+          <div class="fcol"><div class="fnode gd"><span class="fid">차단</span><div class="fnm">한도 초과 — 기부 불가</div><div class="fdt">전액 차단</div></div></div>
+          <div class="fcol">
+            <div class="fnode scr"><span class="fid">PA-01</span><div class="fnm">주문 결제</div><div class="fdt">정상(가능) 시 진행</div></div>
+            <div class="farr"></div>
+            <div class="fnode term"><span class="fid">PA-02</span><div class="fnm">주문 완료</div><div class="fdt">Ⓐ 답례품 배송 / Ⓑ 순수 기부 영수 · 응원 한마디</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- REG · 정책 반전 고려사항 레지스터 -->
+<div class="pageblock p-flow">
+  <div class="inner">
+    <div class="plabel"><span class="id">REG</span> 정책 반전 고려사항 레지스터 <small>PC · 지정기부 답례품 선택 채택(2026-06-30)으로 등록해야 할 항목 전체</small></div>
+    <table class="reg">
+      <tr><th class="n">#</th><th class="ar">고려사항</th><th>내용 / 비고</th><th style="width:128px;">상태 · 담당</th></tr>
+      <tr><td class="n">1</td><td class="ar">정책 반전 — 2버튼 채택</td><td>구 단일 [기부하기]·‘답례품 없음’ → <b>[답례품 선택 후 기부] / [답례품 없이 기부]</b>. 제도상 지정기부도 답례품 권리(세액공제+답례품). 출처=위기브 클리핑 0630, <b>회의 결정 아님</b>(전임자 빌드 기조의 사후 추인).</td><td><span class="rs ok">확정 06-30</span> 강휘원</td></tr>
+      <tr><td class="n">2</td><td class="ar">답례품 상세 ‘지정기부 바인딩 진입’</td><td>SG-02 [답례품 선택 후 기부]→리스트→RT-04 진입 시 <b>donationId 캐리</b>(위기브 <code>goodsView?donationId=</code>). 캐리 방식(URL/세션) 결정·결제 earmark.</td><td><span class="rs dev">개발 확인</span> 개발</td></tr>
+      <tr><td class="n">3</td><td class="ar">바인딩 진입 시 RT-04 UI 차이</td><td>일반 진입과 구분 — <b>어느 지정기부에 기부하는지 표기</b>(배지·브레드크럼·헤더). 문구·디자인 확정.</td><td><span class="rs hold">논의</span> 강휘원+개발</td></tr>
+      <tr><td class="n">4</td><td class="ar">지정기부별 답례품 풀</td><td>리스트에 노출할 답례품 = <b>서구 답례품 전체 vs 지정기부별 BO 큐레이션</b>. 매핑 주체·관리 화면.</td><td><span class="rs bo">BO 확인</span> 김동근/임경우</td></tr>
+      <tr><td class="n">5</td><td class="ar">순수기부 모달 문구 재정의</td><td>구 포괄 “지정기부는 답례품 미증정”(06-25 결정) → <b>새 정책과 충돌</b> → ‘답례품 없이’ <b>분기 전용</b> 위기브식 안내(“기부 후 답례품 선택 불가”+답례품 바로가기)로 격하.</td><td><span class="rs ok">확정 06-30</span> 강휘원</td></tr>
+      <tr><td class="n">6</td><td class="ar">결제 earmark</td><td>답례품 결제(Ⓐ)도 <b>해당 지정기부로 귀속</b> — 결제 데이터에 지정기부 식별자. 정산·집계 반영.</td><td><span class="rs dev">개발 확인</span> 개발</td></tr>
+      <tr><td class="n">7</td><td class="ar">집행형은 미적용(별개)</td><td>집행형(천원국시·택시·돌봄·중개보수)은 <b>모금객체 없어 이 플로우 미적용</b>(EV-02 성과형). 답례품을 특정 사업 보탬으로 연결(earmark) 금지 — 이 구분은 유효.</td><td><span class="rs ok">유효</span> 강휘원</td></tr>
+      <tr><td class="n">8</td><td class="ar">SB 재작업</td><td>06-29 ‘천원세탁 답례품 결합 제거’를 <b>되돌려</b> SG-02 2버튼+답례품 리스트 반영. <b>← 본 sb2 반영분.</b></td><td><span class="rs ok">반영중</span> 강휘원</td></tr>
+      <tr><td class="n">9</td><td class="ar">공통 가드(거주지·한도)</td><td>거주지 기부불가 모달·한도초과 전액차단 = <b>두 분기 공통</b>(기존 팝업 재사용). 합류 후 한도조회 단계.</td><td><span class="rs dev">구현/고도화</span> 개발</td></tr>
+      <tr><td class="n">10</td><td class="ar">답례품 리스트 팝업 신규</td><td>정렬·카드(이미지·이름·N원부터·해시태그)·더보기. <b>← 본 sb2 신규 추가.</b></td><td><span class="rs bo">신규·퍼블 P2</span> 퍼블/BO</td></tr>
+    </table>
+    <div class="note" style="max-width:1280px;">📌 근거: <b>고향온 지정기부 정책</b> · <b>SG-02 지정기부상세</b> · <b>출처 - 위기브 지정기부 답례품 옵션(운영자 클리핑 0630)</b> · 미결 이슈 트래커 #1·#35. 회의록 전수 확인으로 ‘답례품 없음’이 회의 결정이 아님을 확정.</div>
   </div>
 </div>
 
