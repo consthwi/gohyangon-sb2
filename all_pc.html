@@ -1755,14 +1755,18 @@
         <div class="popup" style="width:560px;">
           <div style="padding:18px 20px;border-bottom:1px solid var(--line);font-size:17px;font-weight:800;display:flex;justify-content:space-between;">카테고리 <span style="color:#9aa0a8;">✕</span></div>
           <div class="catgrid" style="padding:20px;grid-template-columns:repeat(3,1fr);">
-            <div class="catcard"><div class="ci">🥬</div><div class="cn">농산물</div><div class="cs">채소·과일·쌀·잡곡</div></div>
+            <div class="catcard"><div class="ci">🌾</div><div class="cn">농산물</div><div class="cs">쌀·채소·과일</div></div>
             <div class="catcard"><div class="ci">🥩</div><div class="cn">축산물</div><div class="cs">한우·한돈·가공육</div></div>
             <div class="catcard"><div class="ci">🐟</div><div class="cn">수산물</div><div class="cs">생선·건어물</div></div>
-            <div class="catcard"><div class="ci">🍱</div><div class="cn">반찬·가공식품</div><div class="cs">김치·장류·즉석식품</div></div>
+            <div class="catcard"><div class="ci">🍱</div><div class="cn">가공식품</div><div class="cs">김치·장류·즉석</div></div>
             <div class="catcard"><div class="ci">🌿</div><div class="cn">건강·홍삼</div><div class="cs">홍삼·전통차·건기식</div></div>
-            <div class="catcard"><div class="ci">🎁</div><div class="cn">전통·공예</div><div class="cs">생활용품·예술</div></div>
+            <div class="catcard"><div class="ci">🎨</div><div class="cn">전통·공예</div><div class="cs">생활용품·예술</div></div>
+            <div class="catcard"><div class="ci">🎫</div><div class="cn">상품권</div><div class="cs">지역화폐·이용권</div></div>
+            <div class="catcard"><div class="ci">🧴</div><div class="cn">생활용품</div><div class="cs">가전·주방·패션</div></div>
+            <div class="catcard"><div class="ci">✈️</div><div class="cn">여행·숙박</div><div class="cs">체험·숙박·관광</div></div>
+            <div class="catcard" style="grid-column:1/-1;border-color:var(--accent);"><div class="ci">💝</div><div class="cn">기부사업</div><div class="cs">지정기부 통합 · 아동청소년·어르신·문화예술·재난위기 → 기부사업 목록</div></div>
           </div>
-          <div style="padding:0 20px 18px;font-size:12.5px;color:var(--sub);">선택 시 → 해당 대분류로 필터된 <b>답례품 목록(RT-02)</b>으로 이동. <b>2뎁스(소분류) 없음.</b></div>
+          <div style="padding:0 20px 18px;font-size:12.5px;color:var(--sub);">선택 시 → <b>답례품 대분류=답례품 목록(RT-02)</b> / <b>기부사업=기부사업 목록(EV-01)</b>으로 바로 이동. <b>2뎁스(소분류) 없음.</b> CA-01·BO 트리 동일 정합.</div>
         </div>
       </div>
     </div>
@@ -2464,7 +2468,8 @@
       <div class="sec"><div class="dot">1</div><div class="hd"><div class="logo">고향온 <span>| 광주 서구</span></div><div class="nav"><span>광주 서구 이야기</span><span>답례품</span><span>기부사업</span><span>고향사랑안내</span></div><div class="sp"></div><div class="icons"><span>🔍</span><span>▦</span><span class="login">로그인</span></div></div></div>
       <div class="sec"><div class="dot">2</div><div class="block">
         <div class="srbar"><input class="smp" value="한우" placeholder="답례품을 검색하세요"><span class="go">🔍 검색</span></div>
-        <div class="head"><h2>'<span class="smp">한우</span>' 검색 결과 <span class="s smp">총 12건<sup>샘플</sup></span></h2><span class="more">정렬 ▾</span></div>
+        <div class="head"><h2>'<span class="smp">한우</span>' 검색 결과 <span class="s smp">총 12건<sup>샘플</sup></span></h2><span class="more">정렬: 인기순 ▾</span></div>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin:2px 0 14px;"><span class="chip">자치단체 ▾</span><span class="chip">기부금액 범위 ▾</span><span class="chip">가격대 ▾</span><span class="chip" style="color:var(--accent);border-color:var(--accent);">초기화</span></div>
         <div class="grid5">
           <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">광주축산농협<sup>샘플</sup></div><div class="pname smp">한우 등심 1등급 300g<sup>샘플</sup></div><div class="pprice smp">100,000원 <em>기부 시 증정</em><sup>샘플</sup></div><div class="pmeta"><span class="gtag">기부 시 증정</span><span class="rv smp">★ <b>4.9</b> (597)<sup>샘플</sup></span></div></div></div>
           <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">광주축산농협<sup>샘플</sup></div><div class="pname smp">한우 채끝 200g<sup>샘플</sup></div><div class="pprice smp">100,000원 <em>기부 시 증정</em><sup>샘플</sup></div><div class="pmeta"><span class="gtag">기부 시 증정</span><span class="rv smp">★ <b>4.8</b> (210)<sup>샘플</sup></span></div></div></div>
@@ -2472,11 +2477,11 @@
           <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">광주축산농협<sup>샘플</sup></div><div class="pname smp">한우 사골 세트<sup>샘플</sup></div><div class="pprice smp">50,000원 <em>기부 시 증정</em><sup>샘플</sup></div><div class="pmeta"><span class="gtag">기부 시 증정</span><span class="rv smp">★ <b>4.6</b> (34)<sup>샘플</sup></span></div></div></div>
           <div class="pcard"><div class="pimg">답례품 이미지</div><div class="pbody"><div class="psrc smp">장수촌<sup>샘플</sup></div><div class="pname smp">한우 곰탕 3팩<sup>샘플</sup></div><div class="pprice smp">30,000원 <em>기부 시 증정</em><sup>샘플</sup></div><div class="pmeta"><span class="gtag">기부 시 증정</span><span class="rv smp">★ <b>4.7</b> (17)<sup>샘플</sup></span></div></div></div>
         </div>
-        <div class="note">헤더 🔍 검색 → 답례품명·제공처 기준 결과. 정렬(인기·후기·금액). <span class="badge b-bo">BO/외부</span> 답례품 색인.</div>
+        <div class="note">헤더 🔍 검색 → 답례품명·제공처 기준 결과. <b>필터(자치단체·기부금액 범위·가격대) + 정렬(인기·후기·금액)</b> 복원(2026-06-30). 결과 다수 대비 탐색성. <span class="badge b-bo">BO/외부</span> 답례품 색인.</div>
       </div></div>
       <div class="sec"><div class="dot">3</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span><span>나의 답례품 문의</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층 (논현동, 이두데이빌딩)<br>사업자등록번호: 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주) ALL RIGHTS RESERVED.</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
     </div>
-    <div class="desc-col"><div class="desc"><h3>Description — SR-01 (PC)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2</td><td class="area">검색 결과</td><td><span class="badge b-fix">확정</span>검색바(질의 유지)+결과 건수+정렬+답례품 카드 그리드(RT-02와 동일 카드). 무결과 시 빈 상태(아래).</td></tr></table></div></div>
+    <div class="desc-col"><div class="desc"><h3>Description — SR-01 (PC)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2</td><td class="area">검색 결과</td><td><span class="badge b-fix">확정</span>검색바(질의 유지)+결과 건수+<b>필터(자치단체·기부금액범위·가격대)+정렬</b>+답례품 카드 그리드(RT-02와 동일 카드). <b>필터 복원(2026-06-30)</b>. 무결과 시 빈 상태(아래).</td></tr></table></div></div>
   </div>
 </div>
 
@@ -2519,11 +2524,11 @@
 <!-- PAGE · CA-01 전체 카테고리 (PC) -->
 <div class="pageblock p-gift">
   <div class="inner">
-    <div class="plabel"><span class="id">CA-01</span> 전체 카테고리 <small>PC · 헤더 ▦ → 답례품·지정기부 카테고리 전체</small></div>
-    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-13</b> <span class="who">(신규 — 라이브 카테고리 트리 기준)</span></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span></span><span class="it">퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span></div>
+    <div class="plabel"><span class="id">CA-01</span> 전체 카테고리 <small>PC · 헤더 ▦ → <b>1depth</b> 전체 카테고리(답례품 대분류 + 기부사업) · 2depth→1depth 전환(2026-06-30)</small></div>
+    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-30</b> <span class="who">(2depth→1depth · 퍼블팀장 합의)</span></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span></span><span class="it">퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span></div>
     <div class="device">
       <div class="sec"><div class="dot">1</div><div class="hd"><div class="logo">고향온 <span>| 광주 서구</span></div><div class="nav"><span>광주 서구 이야기</span><span>답례품</span><span>기부사업</span><span>고향사랑안내</span></div><div class="sp"></div><div class="icons"><span>🔍</span><span>▦</span><span class="login">로그인</span></div></div></div>
-      <div class="sec"><div class="dot">2</div><div class="block"><div class="head"><h2>답례품 카테고리</h2></div>
+      <div class="sec"><div class="dot">2</div><div class="block"><div class="head"><h2>답례품</h2><span class="s">대분류 1depth · 선택 시 답례품 목록 바로 이동</span></div>
         <div class="catgrid">
           <div class="catcard"><div class="ci">🌾</div><div class="cn">농산물</div><div class="cs">쌀/잡곡 · 채소 · 근채류 · 과일 · 건과/견과</div></div>
           <div class="catcard"><div class="ci">🥩</div><div class="cn">축산물</div><div class="cs">한우 · 양념/가공육 · 한돈 · 닭/오리 · 계란/알류</div></div>
@@ -2535,18 +2540,18 @@
           <div class="catcard"><div class="ci">🧴</div><div class="cn">생활용품</div><div class="cs">가전/가구 · 주방 · 패션뷰티 · 스포츠/레저</div></div>
           <div class="catcard"><div class="ci">✈️</div><div class="cn">여행/숙박</div><div class="cs">체험이용권 · 숙박 · 지역관광상품</div></div>
         </div>
-        <div class="head" style="margin-top:26px;"><h2>지정기부 카테고리</h2></div>
+        <div class="head" style="margin-top:26px;"><h2>기부사업</h2><span class="s">지정기부 통합 · 1depth</span></div>
         <div class="catgrid">
-          <div class="catcard"><div class="ci">🧒</div><div class="cn">아동청소년</div><div class="cs">아동·청소년 지원 사업</div></div>
+          <div class="catcard"><div class="ci">🧒</div><div class="cn">아동·청소년</div><div class="cs">아동·청소년 지원 사업</div></div>
           <div class="catcard"><div class="ci">🧓</div><div class="cn">어르신</div><div class="cs">독거·취약 어르신 지원</div></div>
-          <div class="catcard"><div class="ci">🎭</div><div class="cn">문화예술</div><div class="cs">지역 문화·예술 지원</div></div>
-          <div class="catcard"><div class="ci">🆘</div><div class="cn">재난지원</div><div class="cs">재난·위기 가구 지원</div></div>
+          <div class="catcard"><div class="ci">🎭</div><div class="cn">문화·예술</div><div class="cs">지역 문화·예술 지원</div></div>
+          <div class="catcard"><div class="ci">🆘</div><div class="cn">재난·위기</div><div class="cs">재난·위기 가구 지원</div></div>
         </div>
-        <div class="note">라이브 카테고리 트리 기준(농산물~여행/숙박 + 지정기부 분류). 카테고리 클릭 → 답례품 목록(RT-02) 필터. <span class="badge b-bo">BO</span> 전시 카테고리.</div>
+        <div class="note"><b>1depth 카테고리</b>(2026-06-30 퍼블팀장 합의): 대분류 선택 시 목록으로 <b>바로 이동(소분류 진입 없음)</b>. <b>답례품 대분류 9 → 답례품 목록(RT-02)</b> / <b>기부사업 분야 → 기부사업 목록(EV-01)</b> — 지정기부를 '기부사업'으로 통합·분류. 카드 부제(품목)=포함 예시일 뿐 별도 뎁스 아님. CAT 1뎁스 팝업·BO 카테고리 트리와 동일 정합. <span class="badge b-bo">BO</span></div>
       </div></div>
       <div class="sec"><div class="dot">3</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span><span>나의 답례품 문의</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층 (논현동, 이두데이빌딩)<br>사업자등록번호: 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주) ALL RIGHTS RESERVED.</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
     </div>
-    <div class="desc-col"><div class="desc"><h3>Description — CA-01 (PC)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2</td><td class="area">전체 카테고리</td><td><span class="badge b-fix">확정</span>답례품 9개 대분류(라이브 트리)+지정기부 분류. 카드 클릭→RT-02 목록 필터. MO 하단탭 '카테고리'·헤더 ▦ 진입.</td></tr></table></div></div>
+    <div class="desc-col"><div class="desc"><h3>Description — CA-01 (PC · 1depth)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2</td><td class="area">전체 카테고리(1depth)</td><td><span class="badge b-fix">확정</span><b>2depth→1depth 전환(2026-06-30 퍼블팀장 합의)</b>: 답례품 9 대분류 → 답례품 목록(RT-02), 기부사업 분야 → 기부사업 목록(EV-01). <b>소분류 진입 없음</b>(카드 부제=포함 예시). 지정기부→'기부사업' 통합. CAT 팝업·BO 트리 동일 정합. MO 하단탭 '카테고리'·헤더 ▦ 진입.</td></tr></table></div></div>
   </div>
 </div>
 
