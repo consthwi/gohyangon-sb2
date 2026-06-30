@@ -10,43 +10,37 @@
   .wrap{max-width:760px;margin:0 auto;}
   h1{font-size:22px;font-weight:800;margin-bottom:8px;}
   p.sub{color:#6b7280;font-size:14px;margin-bottom:24px;line-height:1.6;}
-  .delta{background:#b5651d;color:#fff;border-radius:10px;padding:14px 18px;font-size:13.5px;line-height:1.7;margin-bottom:22px;}
+  .delta{background:#1f6f4a;color:#fff;border-radius:10px;padding:14px 18px;font-size:13.5px;line-height:1.7;margin-bottom:22px;}
   .card{display:block;background:#fff;border:1px solid #d0d4d9;border-radius:12px;padding:20px 24px;margin-bottom:14px;text-decoration:none;color:inherit;box-shadow:0 4px 16px rgba(0,0,0,.05);}
   .card:hover{border-color:#2b2f36;}
   .card .t{font-size:17px;font-weight:700;}
   .card .d{font-size:13px;color:#6b7280;margin-top:5px;}
   .note{margin-top:18px;font-size:12.5px;color:#6b7280;background:#fff;border:1px solid #d0d4d9;border-radius:10px;padding:14px 16px;line-height:1.7;}
-  .note b{color:#212529;} ul{margin:6px 0 0 18px;} li{margin:4px 0;}
+  .note b{color:#212529;} ul{margin:6px 0 0 18px;} li{margin:5px 0;}
 </style>
 </head>
 <body>
   <div class="wrap">
     <h1>고향온 · 광주 서구 SB — 변경분(DELTA) 전용</h1>
-    <p class="sub">이전 SB 대비 <b>2026-06-30 수정된 화면만</b> 추출. 미수정 화면 제외 → Figma 증분 import용.</p>
-    <div class="delta">⚠️ <b>delta(변경분) 전용</b> 레포. 전체 화면본은 <b>gohyangon_sb</b>(별도)에 있습니다.</div>
-    <a class="card" href="all_pc.html"><div class="t">▸ 변경 화면 (PC) · 4장 + 팝업 5종</div><div class="d">all_pc.html · 팝업은 맨 아래</div></a>
-    <a class="card" href="all_mo.html"><div class="t">▸ 변경 화면 (MO) · 5장 + 팝업 5종</div><div class="d">all_mo.html · 팝업은 맨 아래</div></a>
+    <p class="sub"><b>2026-06-30 라운드에서 수정된 화면만</b> 추출. 미수정 화면 제외 → Figma 증분 import용.</p>
+    <div class="delta">⚠️ <b>delta(변경분) 전용</b> 레포. 전체 화면본은 <b>gohyangon_sb</b>(별도 repo · gohyangon-sb.vercel.app)에 있습니다.</div>
+
+    <a class="card" href="all_mo.html"><div class="t">▸ 변경 화면 (MO) · 7장</div><div class="d">all_mo.html · import 1회</div></a>
+    <a class="card" href="all_pc.html"><div class="t">▸ 변경 화면 (PC) · 1장 (SG-02)</div><div class="d">all_pc.html · import 1회</div></a>
+
     <div class="note">
-      <b>포함된 변경 화면</b>:
+      <b>포함된 변경 화면 (2026-06-30 라운드)</b>:
       <ul>
-        <li><b>SR-01 검색 결과</b> — 필터 복원 + <b>'추천 답례품' + '진행 기부사업' 섹션</b>(결과 하단, 무결과와 통일·2026-06-30) <span style="color:#999">[PC·MO]</span></li>
-        <li><b>SR-01 검색 무결과</b> — 추천 답례품 + 진행 기부사업 발견 면 <span style="color:#999">[PC·MO]</span></li>
-        <li><b>MY-01 마이페이지</b> — 카운트 타일 목적지 + 배송지관리 회원정보 편입 <span style="color:#999">[PC 데이터·빈상태 / MO]</span></li>
-        <li><b>카테고리 (MO 전용)</b> — <b>1depth = 답례품·기부사업</b> + 로고·사용자명·환영(신규 시안) <span style="color:#999">[MO]</span></li>
-        <li><b>MO ≡ 메뉴 드로어</b> — 카테고리 1depth 정합 <span style="color:#999">[MO]</span></li>
+        <li><b>CA-01 전체메뉴 드로어 (MO)</b> — 햄버거+CA-01 통합·하단탭 '카테고리' 단일 진입·헤더 ≡ 폐지·로그아웃/로그인 2상태 <span style="color:#999">[MO]</span></li>
+        <li><b>SR-01 검색 결과 (MO)</b> — 결과는 다중 row 유지 + '추천 답례품'·'진행 기부사업' <b>가로 peek 캐러셀</b> <span style="color:#999">[MO]</span></li>
+        <li><b>SR-01 검색 무결과 (MO)</b> — 추천 답례품 + 진행 기부사업 발견 면(peek) <span style="color:#999">[MO]</span></li>
+        <li><b>EV-01 기부사업 (MO)</b> — 진행 기부사업·곧 시작 <b>가로 peek 캐러셀</b> <span style="color:#999">[MO]</span></li>
+        <li><b>MY-01 마이페이지 (MO)</b> — 마이메뉴/최근기부/최근주문 <b>3탭</b>(요약 고정·스크롤 축소), 데이터·빈 상태 <span style="color:#999">[MO]</span></li>
+        <li><b>SG-02 지정기부 상세</b> — 사업소개/기부내역/응원하기 <b>진짜 탭</b>으로 통일(탭+별도 응원섹션 중복 정리) <span style="color:#999">[MO·PC]</span></li>
       </ul>
-      <b>변경 요약(2026-06-30)</b>: ① 카테고리 1depth = <b>답례품·기부사업 2종만</b>(소분류는 답례품 목록 필터) ② <b>PC 카테고리 화면 제거</b>(CA-01·▦ 팝업 삭제, GNB 상단탭 이동) ③ MO 카테고리 = 로고·사용자명·환영 + 답례품/기부사업 패널.<br>
-      <b>import</b>: all_pc · all_mo 각 1회.
+      <b>import</b>: all_mo · all_pc 각 1회 (html.to.design).
       <hr style="border:0;border-top:1px solid #e5e7eb;margin:12px 0;">
-      <b>🆕 팝업 검토 추가 (2026-06-30 · 정책 결정 큐 반영) — PC·MO 각 5종</b>:
-      <ul>
-        <li><b>비회원 로그인 유도 팝업</b> — 기부=회원 필수(회원 정책) · 신규</li>
-        <li><b>순수기부 금액입력 팝업</b> — 답례품 없이 기부(기부사업·자치단체·집행형 공통)·정액+자유+한도연동 · 신규</li>
-        <li><b>거주지 기부불가 안내 모달</b> — 본인 주소지 지자체 차단(alert→전용 모달) · 신규</li>
-        <li><b>배송지 추가/수정 폼 팝업</b> — 거주지≠배송지 허용·오배송 책임 회원 · 신규</li>
-        <li><b>주소지·기부 한도 조회 팝업 [수정본]</b> — <b>한도초과 전액차단 안내 추가</b> · 기존 수정</li>
-      </ul>
-      <span style="color:#999">검토 결과 약관동의·수령확정·진입 팝업은 정책 변경 없어 그대로(재import 불필요). 근거: 위키 「팝업 누락 레지스터」·정책 결정 큐 4건.</span>
+      <span style="color:#999">이전 라운드 델타(EV-02 상세·팝업 5종 등)는 이번 교체로 이 레포에서 빠졌으나 <b>원본 gohyangon_sb + git 이력에 보존</b>됩니다. 다시 합쳐야 하면 요청 주세요.</span>
     </div>
   </div>
 </body>

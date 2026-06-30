@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>고향온 SB — 변경분(DELTA) 전용 · sb2</title>
+<title>고향온 디자이너용 SB — 전 페이지 (MO) · 단일 import</title>
 <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   * { box-sizing:border-box; margin:0; padding:0; font-family:'Pretendard',-apple-system,sans-serif; }
@@ -241,103 +241,89 @@
   .addrlist .arow{ border:1px solid var(--line); border-radius:10px; padding:13px; margin-bottom:9px; } .arow .top{ display:flex; align-items:center; gap:7px; margin-bottom:5px; } .arow .deftag{ background:#eef0f3; color:#555; border:1px solid var(--line); font-size:10px; font-weight:700; padding:2px 7px; border-radius:5px; } .arow .nm{ font-weight:800; font-size:13px; } .arow .ad{ font-size:11.5px; color:#555; line-height:1.55; } .arow .acts{ display:flex; gap:6px; margin-top:9px; } .arow .acts a{ border:1px solid var(--line); border-radius:6px; padding:6px 11px; font-size:11px; font-weight:700; color:#555; } .addaddr{ border:1.5px dashed var(--line); border-radius:10px; padding:13px; text-align:center; font-weight:700; color:var(--accent); font-size:12.5px; }
   .noticelist .nrow{ display:flex; gap:9px; padding:12px 2px; border-bottom:1px solid var(--line); font-size:12.5px; align-items:center; } .noticelist .nrow:first-child{ border-top:1px solid var(--line); } .nrow .ncat{ font-size:10px; font-weight:700; color:var(--accent); border:1px solid #c4c8ce; border-radius:5px; padding:2px 7px; flex:none; } .nrow .nt{ flex:1; font-weight:600; } .nrow .nd{ color:var(--sub); font-size:11px; flex:none; }
   .termsbody{ border:1px solid var(--line); border-radius:10px; padding:15px 16px; font-size:11.5px; color:#555; line-height:1.85; max-height:360px; overflow:auto; } .termsbody h4{ font-size:12.5px; color:var(--ink); font-weight:800; margin:12px 0 5px; } .termstab{ display:flex; gap:6px; margin-bottom:12px; flex-wrap:wrap; } .termstab span{ border:1px solid var(--line); border-radius:18px; padding:7px 13px; font-size:11.5px; font-weight:700; color:#555; } .termstab span.on{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  /* 가로 peek 캐러셀 (보조 추천·기부사업·이야기 — 옆 카드 살짝 노출로 '더 있음' 신호) */
+  .peekrow{ display:flex; gap:10px; overflow-x:auto; padding:2px 0 9px; scroll-snap-type:x mandatory; -webkit-overflow-scrolling:touch; }
+  .peekrow::-webkit-scrollbar{ height:4px; } .peekrow::-webkit-scrollbar-thumb{ background:#cfd4da; border-radius:4px; }
+  .peekrow > *{ flex:0 0 44%; scroll-snap-align:start; }
+  .peekrow .sgcard, .peekrow .evcard{ flex:0 0 76%; }
+  /* SG-02 탭 (사업소개/기부내역/응원하기 — 진짜 탭, 1개만 노출) */
+  .sgtab{ display:flex; border-bottom:2px solid #e1e4e8; margin:4px 0 0; } .sgtab .t{ flex:1; text-align:center; padding:11px 6px; font-size:13px; font-weight:700; color:#9aa0a8; border-bottom:2px solid transparent; margin-bottom:-2px; } .sgtab .t.on{ color:var(--ink); border-bottom-color:var(--accent); }
+  .sgpanel{ padding:14px 2px 4px; } .sgpanel.alt{ opacity:.5; } .sgpanel .ptag{ display:inline-block; font-size:10.5px; font-weight:800; color:#7a8089; background:#f1f2f4; border-radius:5px; padding:2px 8px; margin-bottom:8px; }
 </style>
 </head>
 <body>
 
-<!-- PAGE 1 · MA-01 메인 (MO) -->
-<div style="max-width:1340px;margin:0 auto;padding:18px 24px;"><div style="background:#b5651d;color:#fff;border-radius:8px;padding:12px 16px;font:700 14px/1.5 Pretendard,sans-serif;">⚠️ DELTA 전용 — 2026-06-30 변경 화면만. 미수정 화면 제외. 전체본=gohyangon_sb</div></div>
+
+<div style="background:#1f6f4a;color:#fff;padding:18px 22px;font-family:'Pretendard',-apple-system,sans-serif;">
+  <div style="font-size:18px;font-weight:800;">고향온 MO SB — 2026-06-30 변경분만 (Figma import용)</div>
+  <div style="font-size:12.5px;opacity:.92;margin-top:6px;line-height:1.6;">
+    <b>sb2 = 변경분(DELTA) 전용.</b> 이번 라운드(2026-06-30) 수정 화면만. 전체 화면본은 <b>gohyangon_sb</b>(별도 repo).<br>
+    포함: ① CA-01 전체메뉴 드로어(통합) · ② SR-01 검색결과(peek) · ③ SR-01 무결과 · ④ EV-01 기부사업(peek) · ⑤ MY-01 마이페이지(3탭, 데이터/빈) · ⑥ SG-02 지정기부상세(진짜 탭)
+  </div>
+</div>
+
+<!-- COMPONENT · CA-01 전체메뉴 드로어 (MO 전용) — 햄버거+CA-01 통합 · 하단탭 '카테고리'로 일원화 (헤더 ≡ 폐지 2026-06-30) -->
 <div class="pageblock" style="background:#e7e9ec;">
   <div class="inner">
-    <div class="plabel" style="background:#39314a;"><span class="id" style="background:#7c5cbf;">공통</span> MO 햄버거 메뉴 (전체메뉴 드로어) <small>헤더 ≡ 클릭 시 좌측 드로어 오버레이</small></div>
-    <div class="statusflag">
-      <span class="ft">개발 상태</span>
-      <span class="it">기획 확정 <b>2026-06-13</b></span>
-      <span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span>
-      <span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span>
-    </div>
-    <div class="hamwrap">
-      <div class="hamdim"></div>
-      <div class="hamdrawer">
-        <div class="top"><div class="logo">고향온 <span>| 광주 서구</span></div><span>✕</span></div>
-        <div class="auth"><a class="primary">로그인</a><a>회원가입</a></div>
-        <div class="hammenu">
-          <div class="mi">광주 서구 이야기 <span>›</span></div>
-          <div class="mi">답례품 <span>›</span></div>
-          <div class="mi sub" style="color:var(--sub);font-size:11px;">└ 농산물·축산물·수산물 등은 답례품 목록 내 <b>필터</b>(카테고리 1depth=답례품·기부사업)</div>
-          <div class="mi">기부사업 <span>›</span><span class="smp" style="font-size:10px;">(지정기부 모금 포함)</span></div>
-          <div class="mi">고향사랑안내 <span>›</span></div>
-          <div class="sec2">내 정보</div>
-          <div class="mi">마이페이지 <span>›</span></div>
-          <div class="mi">고객센터 <span>›</span></div>
+    <div class="plabel"><span class="id">CA-01</span> 전체메뉴 드로어 (MO 전용) <small>MO · 하단탭 '카테고리' 클릭 → 좌측 드로어 · 로그아웃/로그인 2상태 · <b>헤더 ≡ 폐지(하단탭 일원화)</b> · PC 없음(GNB 탭) (2026-06-30 통합)</small></div>
+    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-30</b> <span class="who">(햄버거+CA-01 통합 · 하단탭 일원화)</span></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span></div>
+    <div style="display:flex;gap:18px;flex-wrap:wrap;">
+      <div>
+        <div style="font-size:11.5px;font-weight:800;color:#4d535b;margin-bottom:7px;">① 로그아웃 상태</div>
+        <div class="hamwrap">
+          <div class="hamdim"></div>
+          <div class="hamdrawer">
+            <div class="top"><div class="logo">고향<span style="color:#FFA300;">ON</span> <span>| 광주 서구</span></div><span>✕</span></div>
+            <div class="auth"><a class="primary">로그인</a><a>회원가입</a></div>
+            <div class="hammenu">
+              <div class="mi">🎁 답례품 <span>›</span></div>
+              <div class="mi sub" style="color:var(--sub);font-size:11px;">└ 농산물·축산물·수산물 등은 답례품 목록(RT-02) 내 <b>필터</b></div>
+              <div class="mi">💝 기부사업 <span>›</span><span class="smp" style="font-size:10px;">(지정기부 모금 포함)</span></div>
+              <div class="mi">📖 광주 서구 이야기 <span>›</span></div>
+              <div class="mi">ℹ️ 고향사랑안내 <span>›</span></div>
+              <div class="sec2">내 정보</div>
+              <div class="mi">마이페이지 <span>›</span><span class="smp" style="font-size:10px;color:var(--accent);">(비로그인 → 로그인 유도)</span></div>
+              <div class="mi">고객센터 <span>›</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div style="font-size:11.5px;font-weight:800;color:#4d535b;margin-bottom:7px;">② 로그인 상태</div>
+        <div class="hamwrap">
+          <div class="hamdim"></div>
+          <div class="hamdrawer">
+            <div class="top"><div class="logo">고향<span style="color:#FFA300;">ON</span> <span>| 광주 서구</span></div><span>✕</span></div>
+            <div style="padding:16px 15px;border-bottom:1px solid var(--line);background:#f7f8fa;">
+              <div style="font-size:16px;font-weight:800;"><span class="smp">최호진</span>님, 환영합니다 👋</div>
+              <div style="font-size:11.5px;color:var(--sub);margin-top:5px;line-height:1.5;">2026년 기부액 <b class="smp" style="color:var(--accent);">500,000원<sup>샘플</sup></b></div>
+            </div>
+            <div class="hammenu">
+              <div class="mi">🎁 답례품 <span>›</span></div>
+              <div class="mi sub" style="color:var(--sub);font-size:11px;">└ 농산물·축산물·수산물 등은 답례품 목록(RT-02) 내 <b>필터</b></div>
+              <div class="mi">💝 기부사업 <span>›</span><span class="smp" style="font-size:10px;">(지정기부 모금 포함)</span></div>
+              <div class="mi">📖 광주 서구 이야기 <span>›</span></div>
+              <div class="mi">ℹ️ 고향사랑안내 <span>›</span></div>
+              <div class="sec2">내 정보</div>
+              <div class="mi">마이페이지 <span>›</span></div>
+              <div class="mi">고객센터 <span>›</span></div>
+              <div class="mi" style="color:#9aa0a8;font-size:12.5px;">로그아웃</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div style="width:100%;font-size:11.5px;color:var(--sub);line-height:1.6;">📌 MO 헤더 <b>≡</b> / 하단 <b>카테고리</b> 클릭 시 패널. <b>카테고리 1depth = 답례품·기부사업 2종만</b>(2026-06-30 확정) → 농산물·축산물 등 소분류는 답례품 목록(RT-02) 내 필터. <span style="color:var(--accent);font-weight:700;">PC는 카테고리 화면 없음(GNB 상단탭 이동). MO만 카테고리 패널(로고·사용자명·환영 + 답례품/기부사업).</span> 우측 dim 클릭 시 닫힘.</div>
+    <div style="width:100%;font-size:11.5px;color:var(--sub);line-height:1.6;margin-top:12px;">📌 <b>진입 = 하단탭 '카테고리'(⊞) 단일</b> — MO 헤더에는 메뉴(≡) 버튼 없음(2026-06-30 일원화, 햄버거 드로어+CA-01 페이지 통합). 좌측 드로어 오버레이, 우측 dim 클릭 시 닫힘. <b>로그아웃</b>=상단 로그인/회원가입 / <b>로그인</b>=사용자명·기부액 + 로그아웃. <b>카테고리 1depth = 답례품·기부사업 2종만</b> → 소분류는 RT-02 필터. <span style="color:var(--accent);font-weight:700;">PC는 이 화면 없음(GNB 상단탭).</span></div>
   </div>
 </div>
 
-<div class="pageblock p-my">
-  <div class="inner">
-    <div class="plabel"><span class="id">MY-01</span> 마이페이지 <small>MO · 데이터 · 최근 기부내역(7일)+최근 주문내역+하단 안내</small></div>
-    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-13</b></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span></div>
-    <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
-      <div class="sec"><div class="dot">2</div><div class="myhead"><div class="nm smp">최호진님<sup>샘플</sup></div><div class="give">2026년 기부액 <b class="smp">500,000원<sup>샘플</sup></b></div>
-        <div class="counts"><div class="c"><div class="n smp">5<sup>샘플</sup></div><div class="l">답례품<br>문의</div></div><div class="c"><div class="n smp">5<sup>샘플</sup></div><div class="l">답례품<br>후기</div></div><div class="c"><div class="n smp">4<sup>샘플</sup></div><div class="l">일반<br>기부</div></div><div class="c"><div class="n smp">1<sup>샘플</sup></div><div class="l">지정<br>기부</div></div></div>
-        <div class="note" style="font-size:10.5px;color:var(--sub);margin-top:8px;">카운트=누적 총건수(30일 제한 폐기)·이 플랫폼(광주 서구) 발생분만. <span class="smp">2026-06-06 확정</span></div></div></div>
-      <div class="sec"><div class="dot">3</div><div class="block"><div class="head"><h2>마이 메뉴</h2></div>
-        <div class="mymenu">
-          <div class="mygrp"><div class="gh">나의 기부</div><a>기부내역 <span>›</span></a><a>주문/배송조회 <span>›</span></a></div>
-          <div class="mygrp"><div class="gh">활동 내역</div><a>나의 답례품 문의 <span>›</span></a><a>나의 답례품 후기 <span>›</span></a><a>나의 1:1문의 <span>›</span></a></div>
-          <div class="mygrp"><div class="gh">회원정보</div><a>회원정보변경 <span>›</span></a><a>비밀번호변경 <span>›</span></a><a>배송지 관리 <span>›</span></a><a>회원탈퇴 <span>›</span></a></div>
-        </div></div></div>
-      <div class="sec"><div class="dot">4</div><div class="block"><div class="head"><h2>최근 기부내역 <span class="s">최근 7일</span></h2><span class="more">전체보기 ›</span></div>
-        <div class="mylist">
-          <div class="lrow"><div><div class="dt smp">2026.06.13<sup>샘플</sup></div><div class="ti smp"><span class="gbadge gen">일반기부</span>광주 서구<sup>샘플</sup></div><div class="sub2 smp">[광주 서구] 한돈 실속1호<sup>샘플</sup></div></div><div class="rt"><span class="stt smp">납부확인중<sup>샘플</sup></span><div class="amt smp">100,000원<sup>샘플</sup></div></div></div>
-          <div class="lrow"><div><div class="dt smp">2026.06.11<sup>샘플</sup></div><div class="ti smp"><span class="gbadge des">지정기부</span>광주 서구<sup>샘플</sup></div><div class="sub2 smp">취약계층 아동 도시락<sup>샘플</sup></div></div><div class="rt"><span class="stt smp" style="color:#2e7d4f;background:#eef7f0;">납부완료<sup>샘플</sup></span><div class="amt smp">200,000원<sup>샘플</sup></div></div></div>
-          <div class="lrow"><div><div class="dt smp">2026.06.10<sup>샘플</sup></div><div class="ti smp"><span class="gbadge gen">일반기부</span>광주 서구<sup>샘플</sup></div><div class="sub2 smp">[광주 서구] 무등산 수박<sup>샘플</sup></div></div><div class="rt"><span class="stt smp" style="color:#2e7d4f;background:#eef7f0;">납부완료<sup>샘플</sup></span><div class="amt smp">100,000원<sup>샘플</sup></div></div></div>
-          <div class="lrow"><div><div class="dt smp">2026.06.09<sup>샘플</sup></div><div class="ti smp"><span class="gbadge gen">일반기부</span>광주 서구<sup>샘플</sup></div><div class="sub2 smp">[광주 서구] 유자청 세트<sup>샘플</sup></div></div><div class="rt"><span class="stt smp" style="color:#2e7d4f;background:#eef7f0;">납부완료<sup>샘플</sup></span><div class="amt smp">50,000원<sup>샘플</sup></div></div></div>
-          <div class="lrow"><div><div class="dt smp">2026.06.08<sup>샘플</sup></div><div class="ti smp"><span class="gbadge gen">일반기부</span>광주 서구<sup>샘플</sup></div><div class="sub2 smp">[광주 서구] 쌀 10kg<sup>샘플</sup></div></div><div class="rt"><span class="stt smp" style="color:#2e7d4f;background:#eef7f0;">납부완료<sup>샘플</sup></span><div class="amt smp">50,000원<sup>샘플</sup></div></div></div>
-        </div>
-        <div class="note" style="font-size:11px;color:var(--sub);">최근 7일 요약. 전체·기간 조회는 기부내역(MY-02).</div></div></div>
-      <div class="sec"><div class="dot">5</div><div class="block"><div class="head"><h2>최근 주문내역</h2><span class="more">전체보기 ›</span></div>
-        <div class="mylist">
-          <div class="lrow"><div class="rim">답례품</div><div><div class="ti smp">[광주 서구] 한돈 실속1호<sup>샘플</sup></div><div class="sub2 smp">2026.06.13 · 1개 · 100,000원<sup>샘플</sup></div><span class="lk">수령확정</span></div><div class="rt"><span class="stt smp">상품준비중<sup>샘플</sup></span></div></div>
-          <div class="lrow"><div class="rim">답례품</div><div><div class="ti smp">[광주 서구] 무등산 수박<sup>샘플</sup></div><div class="sub2 smp">2026.06.10 · 1개 · 100,000원<sup>샘플</sup></div><span class="lk">수령확정</span></div><div class="rt"><span class="stt smp" style="color:#2e7d4f;background:#eef7f0;">배송완료<sup>샘플</sup></span></div></div>
-          <div class="lrow"><div class="rim">답례품</div><div><div class="ti smp">[광주 서구] 유자청 세트<sup>샘플</sup></div><div class="sub2 smp">2026.06.09 · 1개 · 50,000원<sup>샘플</sup></div></div><div class="rt"><span class="stt smp" style="color:#666;background:#eef0f2;">수령완료<sup>샘플</sup></span></div></div>
-        </div>
-        <div class="note" style="font-size:11px;color:var(--sub);">수령확정 → 팝업. 전체는 주문/배송조회(MY-03). 단계 설명은 하단 안내 참고.</div></div></div>
-      <div class="sec"><div class="dot">6</div><div class="block"><div class="head"><h2>답례품 배송상태 안내</h2></div>
-        <div class="shipguide">
-          <div class="sg"><div class="ic">1</div><div><div class="nm">주문완료</div><div class="de">기부와 답례품 신청이 정상 접수된 상태입니다.</div></div></div>
-          <div class="sg"><div class="ic">2</div><div><div class="nm">상품준비중</div><div class="de">자치단체·제공자가 답례품을 준비하고 있습니다.</div></div></div>
-          <div class="sg"><div class="ic">3</div><div><div class="nm">출고완료</div><div class="de">답례품이 출고되어 배송이 시작됩니다.</div></div></div>
-          <div class="sg"><div class="ic">4</div><div><div class="nm">배송중</div><div class="de">답례품이 배송 중입니다. 송장번호로 위치를 확인할 수 있습니다.</div></div></div>
-          <div class="sg"><div class="ic">5</div><div><div class="nm">배송완료</div><div class="de">답례품이 배송지에 도착했습니다. 수령 후 수령확정을 진행해 주세요.</div></div></div>
-        </div>
-        <div class="note" style="font-size:10.5px;color:var(--sub);">하단 고정 인포그래픽(필터 아님)·단계 설명 문구정합화. 기존 '배송상품 주문상태 안내' 정합화.</div></div></div>
-      <div class="sec"><div class="dot">7</div><div class="block"><div class="head"><h2>취소/반품/교환 안내</h2></div>
-        <div style="font-size:11px;color:#555;line-height:1.65;"><b>취소</b> 기부 완료 후 취소 불가(예외는 1899-0522).<br><b>반품</b> 답례품 반품 불가, 하자·오배송은 1:1문의·1899-0522.<br><b>교환</b> 답례품 교환 불가, 하자·파손·오배송은 1:1문의·1899-0522.</div>
-        <div class="note" style="font-size:10.5px;color:var(--sub);">문구=2026-06-08 확정(정합화). 교환/반품 기능 삭제.</div></div></div>
-      <div class="sec"><div class="dot">8</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
-      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt on"><span class="i">👤</span>마이</a></div>
-    </div>
-    <div class="desc-col"><div class="desc"><h3>Description — MY-01 (MO · 데이터)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr>
-      <tr><td class="n">2·3</td><td class="area">요약·메뉴</td><td><span class="badge b-fix">확정</span>기부액·카운트 4·마이 메뉴.</td></tr>
-      <tr><td class="n">4</td><td class="area">최근 기부내역</td><td><span class="badge b-fix">확정</span><b>최근 7일</b> 요약(유형뱃지·납부상태). 전체는 MY-02.</td></tr>
-      <tr><td class="n">5</td><td class="area">최근 주문내역</td><td><span class="badge b-fix">확정</span>주문 목록(수령확정). 5단계 바 제거(아래 안내로 분리). 전체는 MY-03.</td></tr>
-      <tr><td class="n">6</td><td class="area">답례품 배송상태 안내</td><td><span class="badge b-fix">확정</span>하단 고정 인포그래픽(세로)+단계별 설명(정합화). '배송상품 주문상태 안내' 정합화.</td></tr>
-      <tr><td class="n">7</td><td class="area">하단 안내</td><td><span class="badge b-fix">확정</span>취소/반품/교환 안내(2026-06-08 확정·정합화).</td></tr></table></div></div>
-  </div>
-</div>
-
+<!-- PAGE · SR-01 검색 결과 (MO) -->
 <div class="pageblock p-gift">
   <div class="inner">
     <div class="plabel"><span class="id">SR-01</span> 검색 결과 <small>MO · 하단탭 '검색' → 결과/무결과</small></div>
     <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-13</b></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span></div>
     <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
+      <div class="sec"><div class="dot">1</div><div class="hd"><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
       <div class="sec"><div class="dot">2</div><div class="block">
         <div class="srbar"><input class="smp" value="한우" placeholder="답례품 검색"><span class="go">검색</span></div>
         <div class="head"><h2>'한우' 결과 <span class="s smp">12건<sup>샘플</sup></span></h2></div>
@@ -351,8 +337,8 @@
         <div class="note" style="font-size:11px;color:var(--sub);">하단탭 '검색'·헤더 🔍 진입. <b>필터(자치단체·기부금액·가격대)+정렬 복원</b>. 무결과 시 빈 상태.</div>
       </div></div>
       <div class="sec"><div class="dot">3</div><div class="block">
-        <div class="head"><h2>광주 서구가 추천하는 답례품</h2><span class="s">이 답례품도 함께</span></div>
-        <div class="grid2">
+        <div class="head"><h2>광주 서구가 추천하는 답례품</h2><span class="s">이 답례품도 함께 ▸</span></div>
+        <div class="peekrow">
           <div class="pcard"><div class="pimg">답례품</div><div class="pbody"><div class="psrc smp">송정떡갈비<sup>샘플</sup></div><div class="pname smp">무등산 떡갈비 세트<sup>샘플</sup></div><div class="pprice smp">50,000원<sup>샘플</sup></div></div></div>
           <div class="pcard"><div class="pimg">답례품</div><div class="pbody"><div class="psrc smp">광주김치<sup>샘플</sup></div><div class="pname smp">포기김치 5kg<sup>샘플</sup></div><div class="pprice smp">30,000원<sup>샘플</sup></div></div></div>
           <div class="pcard"><div class="pimg">답례품</div><div class="pbody"><div class="psrc smp">무등산농원<sup>샘플</sup></div><div class="pname smp">친환경 쌀 10kg<sup>샘플</sup></div><div class="pprice smp">50,000원<sup>샘플</sup></div></div></div>
@@ -360,34 +346,27 @@
         </div>
         <div class="note" style="font-size:11px;color:var(--sub);">결과 하단 교차발견 — BO 전시/BEST(없으면 인기순). 0건 시 자동 숨김.</div>
       </div></div>
-      <div class="sec"><div class="dot">4</div><div class="block">
-        <div class="head"><h2>광주 서구가 진행하는 기부사업</h2><span class="s">마음이 머무는 곳에 기부해 보세요</span></div>
-        <div class="sggrid">
-          <div class="sgcard"><div class="cimg">사업</div><div class="cb"><div class="rg"><span>광주 서구</span><span class="dday smp">D-180<sup>샘플</sup></span></div><div class="nm smp">서구 아동 급식 지원<sup>샘플</sup></div><div class="track"><i style="width:42%"></i></div><div class="am"><span class="pct smp">42%<sup>샘플</sup></span><span class="smp">12,600,000원<sup>샘플</sup></span></div></div></div>
-          <div class="sgcard"><div class="cimg">사업</div><div class="cb"><div class="rg"><span>광주 서구</span><span class="dday smp">D-95<sup>샘플</sup></span></div><div class="nm smp">독거어르신 연탄·난방 나눔<sup>샘플</sup></div><div class="track"><i style="width:68%"></i></div><div class="am"><span class="pct smp">68%<sup>샘플</sup></span><span class="smp">27,200,000원<sup>샘플</sup></span></div></div></div>
-        </div>
-        <div class="note" style="font-size:11px;color:var(--sub);">검색 <b>결과가 있을 때도</b> 하단에 진행 기부사업 동일 노출(무결과 화면과 통일, 2026-06-30). 0건이면 섹션 자동 숨김. 검색→기부 참여 동선 상시.</div>
-      </div></div>
-      <div class="sec"><div class="dot">5</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
+      <div class="sec"><div class="dot">4</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
       <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt on"><span class="i">🔍</span>검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
     </div>
-    <div class="desc-col"><div class="desc"><h3>Description — SR-01 (MO)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2</td><td class="area">검색 결과</td><td><span class="badge b-fix">확정</span>검색바+2열 카드. 하단탭 '검색' 활성. 무결과 빈 상태 별도(아래).</td></tr><tr><td class="n">3</td><td class="area">추천 답례품</td><td><span class="badge b-fix">확정</span>결과 하단 교차발견(2026-06-30). <span class="badge b-bo">BO</span> BEST/인기순. 0건 시 자동 숨김.</td></tr><tr><td class="n">4</td><td class="area">진행 기부사업</td><td><span class="badge b-fix">확정</span>진행중 사업 카드. <b>결과 유무와 무관하게 동일 노출(무결과 화면과 통일, 2026-06-30)</b>. <span class="badge b-bo">BO</span> 진행중 정렬. 0건 시 자동 숨김.</td></tr></table></div></div>
+    <div class="desc-col"><div class="desc"><h3>Description — SR-01 (MO)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2</td><td class="area">검색 결과</td><td><span class="badge b-fix">확정</span>검색바+2열 카드. 하단탭 '검색' 활성. 무결과 빈 상태 별도(아래).</td></tr><tr><td class="n">3</td><td class="area">추천 답례품</td><td><span class="badge b-fix">확정</span>결과 하단 교차발견(2026-06-30). <span class="badge b-bo">BO</span> BEST/인기순. 0건 시 자동 숨김.</td></tr></table></div></div>
   </div>
 </div>
 
+<!-- PAGE · SR-01 검색 결과 무결과 (MO) — 강화: 추천 답례품 + 기부사업 발견 면 -->
 <div class="pageblock p-gift">
   <div class="inner">
     <div class="plabel"><span class="id">SR-01</span> 검색 결과 <small>MO · <b>무결과 상태</b> · 추천 답례품·기부사업 발견 면(2026-06-30 강화)</small></div>
     <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-30</b> <span class="who">(무결과 강화)</span></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span></div>
     <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
+      <div class="sec"><div class="dot">1</div><div class="hd"><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
       <div class="sec"><div class="dot">2</div><div class="block">
         <div class="srbar"><input class="smp" value="없는검색어" placeholder="답례품 검색"><span class="go">검색</span></div>
         <div class="emptybox">'<span class="smp">없는검색어</span>' 검색 결과가 없습니다.<br><span class="smp">다른 검색어를 입력하거나 아래에서 찾아보세요.</span><br><span style="display:inline-block;margin-top:11px;padding:8px 16px;border:1px solid var(--accent);color:var(--accent);border-radius:8px;font-size:12px;font-weight:700;">전체 카테고리 보기</span><div style="margin-top:11px;font-size:11px;color:var(--sub);">인기검색어 <span class="smp" style="display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:12px;margin:2px;background:#fff;">한우</span><span class="smp" style="display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:12px;margin:2px;background:#fff;">김치</span><span class="smp" style="display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:12px;margin:2px;background:#fff;">쌀</span><span class="smp" style="display:inline-block;padding:2px 8px;border:1px solid var(--line);border-radius:12px;margin:2px;background:#fff;">떡갈비</span></div></div>
       </div></div>
       <div class="sec"><div class="dot">3</div><div class="block">
-        <div class="head"><h2>광주 서구가 추천하는 답례품</h2><span class="s">이런 답례품은 어떠세요?</span></div>
-        <div class="grid2">
+        <div class="head"><h2>광주 서구가 추천하는 답례품</h2><span class="s">이런 답례품은 어떠세요? ▸</span></div>
+        <div class="peekrow">
           <div class="pcard"><div class="pimg">답례품</div><div class="pbody"><div class="psrc smp">광주축산농협<sup>샘플</sup></div><div class="pname smp">한우 등심 1등급 300g<sup>샘플</sup></div><div class="pprice smp">100,000원<sup>샘플</sup></div></div></div>
           <div class="pcard"><div class="pimg">답례품</div><div class="pbody"><div class="psrc smp">송정떡갈비<sup>샘플</sup></div><div class="pname smp">무등산 떡갈비 세트<sup>샘플</sup></div><div class="pprice smp">50,000원<sup>샘플</sup></div></div></div>
           <div class="pcard"><div class="pimg">답례품</div><div class="pbody"><div class="psrc smp">광주김치<sup>샘플</sup></div><div class="pname smp">포기김치 5kg<sup>샘플</sup></div><div class="pprice smp">30,000원<sup>샘플</sup></div></div></div>
@@ -396,8 +375,8 @@
         <div class="note" style="font-size:11px;color:var(--sub);">BO 전시/BEST 큐레이션(없으면 인기순). 검색 0건 이탈 방지.</div>
       </div></div>
       <div class="sec"><div class="dot">4</div><div class="block">
-        <div class="head"><h2>광주 서구가 진행하는 기부사업</h2><span class="s">마음이 머무는 곳에 기부해 보세요</span></div>
-        <div class="sggrid">
+        <div class="head"><h2>광주 서구가 진행하는 기부사업</h2><span class="s">마음이 머무는 곳에 기부해 보세요 ▸</span></div>
+        <div class="peekrow">
           <div class="sgcard"><div class="cimg">사업</div><div class="cb"><div class="rg"><span>광주 서구</span><span class="dday smp">D-180<sup>샘플</sup></span></div><div class="nm smp">서구 아동 급식 지원<sup>샘플</sup></div><div class="track"><i style="width:42%"></i></div><div class="am"><span class="pct smp">42%<sup>샘플</sup></span><span class="smp">12,600,000원<sup>샘플</sup></span></div></div></div>
           <div class="sgcard"><div class="cimg">사업</div><div class="cb"><div class="rg"><span>광주 서구</span><span class="dday smp">D-95<sup>샘플</sup></span></div><div class="nm smp">독거어르신 연탄·난방 나눔<sup>샘플</sup></div><div class="track"><i style="width:68%"></i></div><div class="am"><span class="pct smp">68%<sup>샘플</sup></span><span class="smp">27,200,000원<sup>샘플</sup></span></div></div></div>
         </div>
@@ -410,46 +389,6 @@
   </div>
 </div>
 
-<div class="pageblock p-gift">
-  <div class="inner">
-    <div class="plabel"><span class="id">CA-01</span> 카테고리 (MO 전용) <small>MO · 하단탭 '카테고리'/≡ → <b>1depth(답례품·기부사업)</b> + 로고·사용자명·환영 · 2depth 아코디언 폐지 · <b>PC는 카테고리 화면 없음</b>(GNB 탭) (2026-06-30 재설계)</small></div>
-    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-30</b> <span class="who">(MO 카테고리 재설계 · 답례품/기부사업 1depth)</span></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span></div>
-    <div class="device">
-      <div class="sec"><div class="dot">1</div>
-        <div style="display:flex;align-items:center;justify-content:space-between;padding:16px 18px;border-bottom:1px solid var(--line);background:#fff;">
-          <div style="font-weight:800;font-size:18px;">고향<span style="color:#FFA300;">ON</span> <span style="color:var(--sub);font-weight:600;font-size:13px;">| 광주 서구</span></div>
-          <span style="color:#9aa0a8;font-size:20px;">✕</span>
-        </div>
-      </div>
-      <div class="sec"><div class="dot">2</div>
-        <div style="padding:22px 18px 10px;background:#fff;">
-          <div style="font-size:19px;font-weight:800;line-height:1.4;"><span class="smp">최호진</span>님,<br>환영합니다 👋</div>
-          <div style="font-size:13px;color:var(--sub);margin-top:8px;line-height:1.6;">광주 서구에 보내주신 따뜻한 마음, 감사합니다.<br>무엇을 찾고 계신가요?</div>
-        </div>
-      </div>
-      <div class="sec"><div class="dot">3</div>
-        <div style="padding:10px 18px 22px;display:flex;flex-direction:column;gap:12px;background:#fff;min-height:200px;">
-          <a style="display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:14px;padding:20px 18px;background:#fff;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(0,0,0,.04);">
-            <span style="font-size:30px;">🎁</span>
-            <span style="flex:1;"><span style="display:block;font-weight:800;font-size:16.5px;">답례품</span><span style="display:block;font-size:12px;color:var(--sub);margin-top:4px;">기부하고 답례품 받기</span></span>
-            <span style="color:#9aa0a8;font-size:18px;">›</span>
-          </a>
-          <a style="display:flex;align-items:center;gap:14px;border:1px solid var(--line);border-radius:14px;padding:20px 18px;background:#fff;text-decoration:none;color:inherit;box-shadow:0 2px 8px rgba(0,0,0,.04);">
-            <span style="font-size:30px;">💝</span>
-            <span style="flex:1;"><span style="display:block;font-weight:800;font-size:16.5px;">기부사업</span><span style="display:block;font-size:12px;color:var(--sub);margin-top:4px;">광주 서구 기부사업에 참여</span></span>
-            <span style="color:#9aa0a8;font-size:18px;">›</span>
-          </a>
-        </div>
-        <div class="note" style="font-size:11px;color:var(--sub);margin:0 18px 14px;"><b>MO 전용 카테고리 패널</b>(하단탭 '카테고리'/≡ 진입) — <b>1depth = 답례품·기부사업 2종만</b>(농산물·축산물 등 소분류는 답례품 목록 RT-02 내 필터). 상단=로고·사용자명·환영(간단). 답례품→RT-02 / 기부사업→기부사업 목록(EV-01). <b>비로그인 시</b> 사용자명 자리 = "로그인하고 시작하기" 유도. <b>PC는 이 화면 없음</b>(GNB 상단탭으로 이동). <span class="badge b-fix">확정 2026-06-30</span></div>
-      </div>
-      <div class="btmnav"><a class="bt on"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
-    </div>
-    <div class="desc-col"><div class="desc"><h3>Description — 카테고리 (MO 전용)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">1</td><td class="area">로고·닫기</td><td><span class="badge b-fix">확정</span>광주서구ON 로고(고향ON 앰버 포인트) + 닫기(✕). 패널형.</td></tr><tr><td class="n">2</td><td class="area">환영(MO 전용)</td><td><span class="badge b-fix">확정</span><b>사용자명 + 환영문구</b>(간단). 비로그인 시 로그인 유도로 치환. <span class="badge b-bo">BO</span> 회원.</td></tr><tr><td class="n">3</td><td class="area">1depth 카테고리</td><td><span class="badge b-fix">확정</span><b>답례품 / 기부사업 2종만</b>(2026-06-30). 소분류·대분류는 RT-02 필터로 흡수. 답례품→RT-02, 기부사업→기부사업 목록(EV-01). <b>PC 미사용</b>(GNB 탭).</td></tr></table></div></div>
-  </div>
-</div>
-
-
-<!-- ===== [추가 2026-06-30] 기부사업 페이지 시안 (MO · 김희선 답신 반영) ===== -->
 <!-- PAGE 6 · EV-01 기부사업 (MO) — 구 '이벤트' 전면개편 (천원시리즈) -->
 <div class="pageblock p-event">
   <div class="inner">
@@ -458,52 +397,148 @@
       <span class="ft">개발 상태</span>
       <span class="it">기획 <span class="st prog">개편중</span> <b>2026-06-27</b> <span class="who">(김희선 주무관·6/29 협의예정)</span></span>
       <span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P3</span></span>
-      <span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">BO 기부사업 등록모델 — Phase1 운영자 대행 / Phase2 지자체 직접</span></span>
+      <span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">BO 콘텐츠 등록모델 필요</span></span>
     </div>
     <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
+      <div class="sec"><div class="dot">1</div><div class="hd"><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
       <div class="sec"><div class="dot">2</div><div class="evhero"><div class="t">광주 서구의 기부금은,<br>이렇게 쓰입니다</div><div class="d">청장 역점 ‘천원 시리즈’</div></div></div>
-      <!-- [삭제 2026-06-30] dot-3 ‘지금까지의 변화’ 통계 블록 — 김희선 주무관 요청(현재 모금현황 비공개+현행화 부담) -->
-      <div class="sec"><div class="dot">3</div><div class="block"><div class="head"><h2>지금 함께할 수 있어요</h2><span class="s">🤝 지정기부 모금(e음)</span></div>
+      <div class="sec"><div class="dot">3</div><div class="block"><div class="head"><h2>지금까지의 변화</h2></div>
+        <div class="stats"><div class="stat"><div class="num smp">1,240명<sup>샘플</sup></div><div class="lbl">누적 기부자</div></div><div class="stat"><div class="num smp">3.2억<sup>샘플</sup></div><div class="lbl">누적 기부금</div></div><div class="stat"><div class="num smp">6개<sup>샘플</sup></div><div class="lbl">기부사업</div></div><div class="stat"><div class="num smp">1,800명<sup>샘플</sup></div><div class="lbl">혜택 이웃</div></div></div></div></div>
+      <div class="sec"><div class="dot">4</div><div class="block"><div class="head"><h2>지금 함께할 수 있어요</h2><span class="s">🤝 지정기부 모금(e음)</span></div>
         <div class="emptybox" style="min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;">현재 진행 중인 지정기부 모금이 없습니다.<br><span class="smp">준비되는 대로 이곳에서 바로 참여하실 수 있습니다.</span></div>
-        <div class="note" style="font-size:11px;color:var(--sub);margin-top:8px;">🔻 7월말 천사기저귀 등록 시 예시:</div>
+        <div class="note" style="font-size:11px;color:var(--sub);margin-top:8px;">🔻 등록 시 예시(현재 e음 API 0건):</div>
         <div class="sggrid" style="grid-template-columns:1fr;margin-top:8px;opacity:.65;">
-          <div class="sgcard"><div class="cimg">천사기저귀 이미지 (자료 수신 후)</div><div class="cb"><div class="rg"><span>광주 서구 · 지정기부</span><span class="dday smp">7월말 등록 예정<sup>예시</sup></span></div><div class="nm">천사(1000사) 기저귀 지원 모금</div><div class="track"><i style="width:0%"></i></div><div class="am"><span class="pct">모금 예정</span><span style="color:#2f6db0;font-weight:700;">기부하기 →</span></div></div></div>
+          <div class="sgcard"><div class="cimg">천원세탁 이미지</div><div class="cb"><div class="rg"><span>광주 서구 · 지정기부</span><span class="dday smp">D-60<sup>샘플</sup></span></div><div class="nm">천원세탁 모금</div><div class="track"><i style="width:40%"></i></div><div class="am"><span class="pct smp">40%<sup>샘플</sup></span><span style="color:#2f6db0;font-weight:700;">기부하기 →</span></div></div></div>
         </div>
-        <div class="note" style="font-size:11px;color:var(--sub);margin-top:8px;border-left:3px solid var(--accent);"><b>🔗 일원화(2026-06-27 · 6/30 주무관 승인)</b>: 지정기부 별도 메뉴 없이 이 섹션으로. 모금=e음 출력(BO 수정 불가)·카드→SG-02 [기부하기]. <b>[6/30] 천원세탁=모금 완료(e음 52%+위기브·웰로 48%=100%)·집행 중이라 여기 안 뜸</b>(아래 이야기에 집행 성과로). <b>천사기저귀는 7월말 의회승인 후 등록</b>되면 여기 노출.</div></div></div>
-      <div class="sec"><div class="dot">4</div><div class="block"><div class="head"><h2>지금 진행 중인 기부사업 🟢</h2><span class="s">기부금이 이렇게 쓰여요</span></div>
-        <div class="evgrid" style="grid-template-columns:1fr;">
+        <div class="note" style="font-size:11px;color:var(--sub);margin-top:8px;border-left:3px solid var(--accent);"><b>🔗 일원화(2026-06-27)</b>: 지정기부 별도 메뉴 없이 이 섹션으로. 사유=e음 API 0건이라 별도 페이지 텅 빔. 모금=e음 출력(BO 수정 불가)·카드→SG-02 [기부하기]. 천원세탁·기저귀 e음 등록 후 여기 노출, 등록 전엔 아래 이야기로만.</div></div></div>
+      <div class="sec"><div class="dot">5</div><div class="block"><div class="head"><h2>지금 진행 중인 기부사업 🟢</h2><span class="s">기부금이 이렇게 쓰여요 ▸</span></div>
+        <div class="peekrow">
           <div class="evcard"><div class="eimg">천원국시 사진<span class="estat on">진행중</span></div><div class="eb"><div class="et">천원국시</div><div class="ed">우리밀 국수 1,000원·어르신 일자리 · <b>7·8·10호점 고향사랑기부금 개소</b> · ▶ 영상 3편 ›</div></div></div>
           <div class="evcard"><div class="eimg">천원택시 사진<span class="estat on">진행중</span></div><div class="eb"><div class="et">천원택시</div><div class="ed">병원길 교통비 본인부담 1,000원 · <b>고향사랑기부금 3억원(전년比 10배)</b> · 자세히 ›</div></div></div>
-          <div class="evcard"><div class="eimg">천원세탁 사진<span class="estat on">집행중</span></div><div class="eb"><div class="et">천원세탁 <span class="gbadge gen">집행</span></div><div class="ed">장애인 방문 세탁 건당 1,000원·월 5만원 한도 · <b>모금 완료 후 2026 집행 중</b> · 자세히 ›</div></div></div>
+          <div class="evcard"><div class="eimg">천원세탁 사진<span class="estat on">진행중</span></div><div class="eb"><div class="et">천원세탁 <span class="gbadge des">지정기부</span></div><div class="ed">장애인 세탁 월 5만원 한도 · <span style="color:#2f6db0;font-weight:700;">위 ‘지금 모금 중’에서 기부 ›</span></div></div></div>
         </div>
-        <div class="note" style="font-size:11px;color:var(--sub);margin-top:8px;">💡 이야기 섹션(BO). 모금 완료/없는 사업(국시·택시·<b>세탁</b>)은 집행 성과를, 모금 중 사업(기저귀)은 소개+위 모금섹션 연결. 메인 ⑦과 동일 데이터. <b>📌 등록 = Phase1 운영자 대행 / Phase2 지자체 직접 BO</b>(2026-06-29).</div></div></div>
-      <div class="sec"><div class="dot">5</div><div class="block"><div class="head"><h2>곧 시작해요 🟡</h2></div>
-        <div class="evgrid" style="grid-template-columns:1fr;">
+        <div class="note" style="font-size:11px;color:var(--sub);margin-top:8px;">💡 이야기 섹션(BO). 지정기부형(세탁·기저귀)은 여기 소개 + 위 모금섹션 연결. 메인 ⑦과 동일 데이터.</div></div></div>
+      <div class="sec"><div class="dot">6</div><div class="block"><div class="head"><h2>곧 시작해요 🟡</h2><span class="s">▸</span></div>
+        <div class="peekrow">
           <div class="evcard" style="opacity:.82;"><div class="eimg">준비 중<span class="estat soon">곧 시작</span></div><div class="eb"><div class="et">천원돌봄 · 천원중개보수</div><div class="ed">2026.8~ 준비 중</div></div></div>
-          <div class="evcard" style="opacity:.82;"><div class="eimg">준비 중<span class="estat soon">곧 시작</span></div><div class="eb"><div class="et">천사 기저귀 지원 <span class="gbadge des">지정기부</span></div><div class="ed">출산세대 기저귀 바우처 · <b>모금 7월말~(의회승인 후)</b> / 사업은 모금완료 후</div></div></div>
+          <div class="evcard" style="opacity:.82;"><div class="eimg">준비 중<span class="estat soon">곧 시작</span></div><div class="eb"><div class="et">천사 기저귀 지원 <span class="gbadge des">지정기부</span></div><div class="ed">출산세대 30만원 바우처 · <b>모금 8월~</b> / 사업은 모금완료 후</div></div></div>
         </div></div></div>
-      <div class="sec"><div class="dot">6</div><div class="block"><div class="head"><h2>영상으로 보는 광주 서구 기부사업</h2><span class="s" style="font-size:10.5px;">기부사업별 영상·뉴스 (BO 등록)</span></div>
+      <div class="sec"><div class="dot">7</div><div class="block"><div class="head"><h2>영상으로 보는 천원의 행복</h2></div>
         <div class="grid1">
-          <div class="ccard"><div class="cimg">▶</div><div class="cbody"><span class="ctype vid">영상</span> <span class="gbadge gen">천원국시</span><div class="ctitle">천원국시 7호점 개소 영상</div></div></div>
-          <div class="ccard"><div class="cimg">▶</div><div class="cbody"><span class="ctype vid">영상</span> <span class="gbadge gen">천원국시</span><div class="ctitle">천원국시 10호점 개소 영상</div></div></div>
-          <div class="ccard" style="opacity:.7;border-style:dashed;"><div class="cimg">＋</div><div class="cbody"><span class="ctype">등록 영역</span> <span class="gbadge des">다른 기부사업</span><div class="ctitle smp">기부사업별 영상 추가 영역<sup>샘플</sup></div></div></div>
-        </div>
-        <div class="note" style="font-size:10.5px;">💡 광주 서구 기부사업 전체 영상·뉴스를 통합 노출(기부사업별 BO 등록). 천원시리즈 외 사업도 등재 가능. 현재 천원국시만 자산 확보(유튜브 3편).</div></div></div>
-      <div class="sec"><div class="dot">7</div><div class="dpromo"><div><h3>다음 천원의 행복을 함께</h3><p>답례품·위 ‘지금 모금 중’ 지정기부로 함께해주세요</p></div><div class="btn">답례품 보러가기</div></div></div>
-      <div class="sec"><div class="dot">8</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div>
+          <div class="ccard"><div class="cimg">▶</div><div class="cbody"><span class="ctype vid">영상</span><div class="ctitle">천원국시 7호점 개소 영상</div></div></div>
+          <div class="ccard"><div class="cimg">▶</div><div class="cbody"><span class="ctype vid">영상</span><div class="ctitle">천원국시 10호점 개소 영상</div></div></div>
+        </div></div></div>
+      <div class="sec"><div class="dot">8</div><div class="dpromo"><div><h3>다음 천원의 행복을 함께</h3><p>답례품·위 ‘지금 모금 중’ 지정기부로 함께해주세요</p></div><div class="btn">답례품 보러가기</div></div></div>
+      <div class="sec"><div class="dot">9</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div>
         <div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
-      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>상품검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
+      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
     </div>
     <div class="desc-col"><div class="desc"><h3>Description — EV-01 기부사업 (MO)</h3>
       <table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr>
         <tr><td class="n">1·2</td><td class="area">헤더·히어로</td><td><span class="badge b-fix">확정</span>탭명 ‘이벤트’→‘기부사업’ + <b>지정기부 메뉴 제거(일원화)</b>. 천원시리즈 도입부.</td></tr>
-        <tr><td class="n">3</td><td class="area">★지금 모금 중(지정기부)</td><td><span class="badge b-fix">확정</span><b>e음 API 섹션·현재 0건 빈상태</b>. <b style="color:#b5651d;">[6/30] 천원세탁=모금완료·집행중→안 뜸. 기저귀 7월말 등록 후 노출.</b> 카드→SG-02 [기부하기]. 지정기부 별도 메뉴 대신 이 섹션으로 일원화.</td></tr>
-        <tr><td class="n">4</td><td class="area">진행 기부사업(이야기)</td><td><span class="badge b-fix">확정</span>BO 콘텐츠·천원시리즈. 모금완료/없는 사업(세탁·국시·택시)=집행 성과, 모금 중(기저귀)=소개+위 모금섹션 연결. <b>등록=Phase1 운영자/Phase2 지자체</b>(6/29).</td></tr>
-        <tr><td class="n">5</td><td class="area">곧 시작</td><td><span class="badge b-open">협의</span>예정 사업(6/29 확인). <b style="color:#b5651d;">[6/30] 기저귀 모금=7월말 의회승인 후.</b></td></tr>
-        <tr><td class="n">6·7·8</td><td class="area">영상·유도·푸터</td><td><span class="badge b-bo">BO</span>천원국시 유튜브 + 답례품/지정기부 유도. <b>전체 빈상태</b>: 사업 0건 시 ‘답례품으로 기부’ CTA. <b style="color:#b5651d;">[6/30] ‘지금까지의 변화’ 통계 삭제.</b></td></tr>
+        <tr><td class="n">3</td><td class="area">카운터</td><td><span class="badge b-bo">BO</span>‘규모’ 숫자 보강. 실수치 6/29 확정.</td></tr>
+        <tr><td class="n">4</td><td class="area">★지금 모금 중(지정기부)</td><td><span class="badge b-fix">확정</span><b>e음 API 섹션·현재 0건 빈상태</b>(아래 예시는 등록 시). 카드→SG-02 [기부하기]. <b>지정기부를 별도 메뉴 대신 이 섹션으로 일원화.</b></td></tr>
+        <tr><td class="n">5</td><td class="area">진행 기부사업(이야기)</td><td><span class="badge b-fix">확정</span>BO 콘텐츠·천원시리즈. 지정기부형은 소개+위 모금섹션 연결.</td></tr>
+        <tr><td class="n">6</td><td class="area">곧 시작</td><td><span class="badge b-open">협의</span>예정 사업(6/29 확인). 기저귀=모금/사업 분리.</td></tr>
+        <tr><td class="n">7·8·9</td><td class="area">영상·유도·푸터</td><td><span class="badge b-bo">BO</span>천원국시 유튜브 + 답례품/지정기부 유도. <b>전체 빈상태</b>: 사업 0건 시 ‘답례품으로 기부’ CTA.</td></tr>
       </table>
     </div></div>
+  </div>
+</div>
+
+<!-- PAGE 12 · MY-01 마이페이지 (MO) -->
+<div class="pageblock p-my">
+  <div class="inner">
+    <div class="plabel"><span class="id">MY-01</span> 마이페이지 <small>MO · 데이터 · 최근 기부내역(7일)+최근 주문내역+하단 안내</small></div>
+    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 확정 <b>2026-06-13</b></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P1</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">담당 미정 (FO/BO 연동)</span></span></div>
+    <div class="device">
+      <div class="sec"><div class="dot">1</div><div class="hd"><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
+      <div class="sec"><div class="dot">2</div><div class="myhead"><div class="nm smp">최호진님<sup>샘플</sup></div><div class="give">2026년 기부액 <b class="smp">500,000원<sup>샘플</sup></b></div>
+        <div class="counts"><div class="c"><div class="n smp">5<sup>샘플</sup></div><div class="l">답례품<br>문의</div></div><div class="c"><div class="n smp">5<sup>샘플</sup></div><div class="l">답례품<br>후기</div></div><div class="c"><div class="n smp">4<sup>샘플</sup></div><div class="l">일반<br>기부</div></div><div class="c"><div class="n smp">1<sup>샘플</sup></div><div class="l">지정<br>기부</div></div></div>
+        <div class="note" style="font-size:10.5px;color:var(--sub);margin-top:8px;">카운트=누적 총건수(30일 제한 폐기)·이 플랫폼(광주 서구) 발생분만. <span class="smp">2026-06-06 확정</span></div></div></div>
+      <div class="sec"><div class="dot">3</div><div class="block">
+        <div class="subtab"><span class="t on">마이 메뉴</span><span class="t">최근 기부내역</span><span class="t">최근 주문내역</span></div>
+        <div class="note" style="font-size:10.5px;color:var(--sub);margin:-4px 0 10px;">3탭 전환 — 실제 화면은 선택 탭 <b>1개 패널만 노출</b>(세로 스크롤 최소화). 아래는 3개 탭 내용 미리보기.</div>
+        <!-- 탭① 마이 메뉴 (기본 노출) -->
+        <div class="mymenu">
+          <div class="mygrp"><div class="gh">나의 기부</div><a>기부내역 <span>›</span></a><a>주문/배송조회 <span>›</span></a></div>
+          <div class="mygrp"><div class="gh">활동 내역</div><a>나의 답례품 문의 <span>›</span></a><a>나의 답례품 후기 <span>›</span></a><a>나의 1:1문의 <span>›</span></a></div>
+          <div class="mygrp"><div class="gh">회원정보</div><a>회원정보변경 <span>›</span></a><a>비밀번호변경 <span>›</span></a><a>배송지 관리 <span>›</span></a><a>회원탈퇴 <span>›</span></a></div>
+        </div>
+        <!-- 탭② 최근 기부내역 (전환 시 노출) -->
+        <div class="sgpanel alt" style="margin-top:16px;"><span class="ptag">탭② 최근 기부내역 · 최근 7일</span>
+          <div class="mylist">
+            <div class="lrow"><div><div class="dt smp">2026.06.13<sup>샘플</sup></div><div class="ti smp"><span class="gbadge gen">일반기부</span>광주 서구<sup>샘플</sup></div><div class="sub2 smp">[광주 서구] 한돈 실속1호<sup>샘플</sup></div></div><div class="rt"><span class="stt smp">납부확인중<sup>샘플</sup></span><div class="amt smp">100,000원<sup>샘플</sup></div></div></div>
+            <div class="lrow"><div><div class="dt smp">2026.06.11<sup>샘플</sup></div><div class="ti smp"><span class="gbadge des">지정기부</span>광주 서구<sup>샘플</sup></div><div class="sub2 smp">취약계층 아동 도시락<sup>샘플</sup></div></div><div class="rt"><span class="stt smp" style="color:#2e7d4f;background:#eef7f0;">납부완료<sup>샘플</sup></span><div class="amt smp">200,000원<sup>샘플</sup></div></div></div>
+            <div class="lrow"><div><div class="dt smp">2026.06.10<sup>샘플</sup></div><div class="ti smp"><span class="gbadge gen">일반기부</span>광주 서구<sup>샘플</sup></div><div class="sub2 smp">[광주 서구] 무등산 수박<sup>샘플</sup></div></div><div class="rt"><span class="stt smp" style="color:#2e7d4f;background:#eef7f0;">납부완료<sup>샘플</sup></span><div class="amt smp">100,000원<sup>샘플</sup></div></div></div>
+          </div>
+          <div class="note" style="font-size:11px;color:var(--sub);">최근 7일 요약. 전체·기간 조회는 기부내역(MY-02).</div>
+        </div>
+        <!-- 탭③ 최근 주문내역 (전환 시 노출) -->
+        <div class="sgpanel alt" style="margin-top:14px;"><span class="ptag">탭③ 최근 주문내역</span>
+          <div class="mylist">
+            <div class="lrow"><div class="rim">답례품</div><div><div class="ti smp">[광주 서구] 한돈 실속1호<sup>샘플</sup></div><div class="sub2 smp">2026.06.13 · 1개 · 100,000원<sup>샘플</sup></div><span class="lk">수령확정</span></div><div class="rt"><span class="stt smp">상품준비중<sup>샘플</sup></span></div></div>
+            <div class="lrow"><div class="rim">답례품</div><div><div class="ti smp">[광주 서구] 무등산 수박<sup>샘플</sup></div><div class="sub2 smp">2026.06.10 · 1개 · 100,000원<sup>샘플</sup></div><span class="lk">수령확정</span></div><div class="rt"><span class="stt smp" style="color:#2e7d4f;background:#eef7f0;">배송완료<sup>샘플</sup></span></div></div>
+            <div class="lrow"><div class="rim">답례품</div><div><div class="ti smp">[광주 서구] 유자청 세트<sup>샘플</sup></div><div class="sub2 smp">2026.06.09 · 1개 · 50,000원<sup>샘플</sup></div></div><div class="rt"><span class="stt smp" style="color:#666;background:#eef0f2;">수령완료<sup>샘플</sup></span></div></div>
+          </div>
+          <div class="note" style="font-size:11px;color:var(--sub);">수령확정 → 팝업. 전체는 주문/배송조회(MY-03). 단계 설명은 하단 안내 참고.</div>
+        </div>
+      </div></div>
+      <div class="sec"><div class="dot">4</div><div class="block"><div class="head"><h2>답례품 배송상태 안내</h2></div>
+        <div class="shipguide">
+          <div class="sg"><div class="ic">1</div><div><div class="nm">주문완료</div><div class="de">기부와 답례품 신청이 정상 접수된 상태입니다.</div></div></div>
+          <div class="sg"><div class="ic">2</div><div><div class="nm">상품준비중</div><div class="de">자치단체·제공자가 답례품을 준비하고 있습니다.</div></div></div>
+          <div class="sg"><div class="ic">3</div><div><div class="nm">출고완료</div><div class="de">답례품이 출고되어 배송이 시작됩니다.</div></div></div>
+          <div class="sg"><div class="ic">4</div><div><div class="nm">배송중</div><div class="de">답례품이 배송 중입니다. 송장번호로 위치를 확인할 수 있습니다.</div></div></div>
+          <div class="sg"><div class="ic">5</div><div><div class="nm">배송완료</div><div class="de">답례품이 배송지에 도착했습니다. 수령 후 수령확정을 진행해 주세요.</div></div></div>
+        </div>
+        <div class="note" style="font-size:10.5px;color:var(--sub);">하단 고정 인포그래픽(필터 아님)·단계 설명 문구정합화. 기존 '배송상품 주문상태 안내' 정합화.</div></div></div>
+      <div class="sec"><div class="dot">5</div><div class="block"><div class="head"><h2>취소/반품/교환 안내</h2></div>
+        <div style="font-size:11px;color:#555;line-height:1.65;"><b>취소</b> 기부 완료 후 취소 불가(예외는 1899-0522).<br><b>반품</b> 답례품 반품 불가, 하자·오배송은 1:1문의·1899-0522.<br><b>교환</b> 답례품 교환 불가, 하자·파손·오배송은 1:1문의·1899-0522.</div>
+        <div class="note" style="font-size:10.5px;color:var(--sub);">문구=2026-06-08 확정(정합화). 교환/반품 기능 삭제.</div></div></div>
+      <div class="sec"><div class="dot">6</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
+      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt on"><span class="i">👤</span>마이</a></div>
+    </div>
+    <div class="desc-col"><div class="desc"><h3>Description — MY-01 (MO · 데이터)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr>
+      <tr><td class="n">2</td><td class="area">요약(고정)</td><td><span class="badge b-fix">확정</span>기부액·카운트 4. 탭 위 <b>항상 노출</b>.</td></tr>
+      <tr><td class="n">3</td><td class="area">★3탭(스크롤 최소화)</td><td><span class="badge b-fix">확정 2026-06-30</span><b>마이 메뉴 / 최근 기부내역(7일) / 최근 주문내역</b> 3탭으로 화면 내 전환(기본=마이 메뉴). 기존 세로 적층 → 탭 1개 노출로 스크롤 축소. 전체는 MY-02·MY-03.</td></tr>
+      <tr><td class="n">4</td><td class="area">답례품 배송상태 안내</td><td><span class="badge b-fix">확정</span>탭 아래 고정 인포그래픽(세로)+단계별 설명(정합화).</td></tr>
+      <tr><td class="n">5</td><td class="area">하단 안내</td><td><span class="badge b-fix">확정</span>취소/반품/교환 안내(2026-06-08 확정·정합화).</td></tr></table></div></div>
+  </div>
+</div>
+
+<!-- PAGE 12b · MY-01 마이페이지 빈 상태 (MO) -->
+<div class="pageblock p-my">
+  <div class="inner">
+    <div class="plabel"><span class="id">MY-01</span> 마이페이지 <small>MO · <b>빈 상태</b>(기부·주문 0건)</small></div>
+    <div class="device" style="max-width:380px;">
+      <div class="sec"><div class="dot">1</div><div class="hd"><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
+      <div class="sec"><div class="dot">2</div><div class="myhead"><div class="nm smp">최호진님<sup>샘플</sup></div><div class="give">2026년 기부액 <b>0원</b></div>
+        <div class="counts"><div class="c"><div class="n">0</div><div class="l">답례품<br>문의</div></div><div class="c"><div class="n">0</div><div class="l">답례품<br>후기</div></div><div class="c"><div class="n">0</div><div class="l">일반<br>기부</div></div><div class="c"><div class="n">0</div><div class="l">지정<br>기부</div></div></div></div></div>
+      <div class="sec"><div class="dot">3</div><div class="block"><div class="head"><h2>마이 메뉴</h2></div>
+        <div class="mymenu">
+          <div class="mygrp"><div class="gh">나의 기부</div><a>기부내역 <span>›</span></a><a>주문/배송조회 <span>›</span></a></div>
+          <div class="mygrp"><div class="gh">활동 내역</div><a>나의 답례품 문의 <span>›</span></a><a>나의 답례품 후기 <span>›</span></a><a>나의 1:1문의 <span>›</span></a></div>
+          <div class="mygrp"><div class="gh">회원정보</div><a>회원정보변경 <span>›</span></a><a>비밀번호변경 <span>›</span></a><a>회원탈퇴 <span>›</span></a></div>
+        </div></div></div>
+      <div class="sec"><div class="dot">4</div><div class="block"><div class="head"><h2>최근 기부내역 <span class="s">최근 7일</span></h2></div>
+        <div class="emptybox">최근 7일 기부 내역이 없습니다.<br><span class="smp">기부 참여 시 표시됩니다.</span><br><span style="display:inline-block;margin-top:11px;padding:8px 16px;border:1px solid var(--accent);color:var(--accent);border-radius:8px;font-size:12px;font-weight:700;">답례품 보러가기</span></div></div></div>
+      <div class="sec"><div class="dot">5</div><div class="block"><div class="head"><h2>최근 주문내역</h2></div>
+        <div class="emptybox">진행 중인 주문이 없습니다.<br><span class="smp">답례품 배송 현황이 표시됩니다.</span></div></div></div>
+      <div class="sec"><div class="dot">6</div><div class="block"><div class="head"><h2>답례품 배송상태 안내</h2></div>
+        <div class="shipguide">
+          <div class="sg"><div class="ic">1</div><div><div class="nm">주문완료</div><div class="de">기부와 답례품 신청이 정상 접수된 상태입니다.</div></div></div>
+          <div class="sg"><div class="ic">2</div><div><div class="nm">상품준비중</div><div class="de">자치단체·제공자가 답례품을 준비하고 있습니다.</div></div></div>
+          <div class="sg"><div class="ic">3</div><div><div class="nm">출고완료</div><div class="de">답례품이 출고되어 배송이 시작됩니다.</div></div></div>
+          <div class="sg"><div class="ic">4</div><div><div class="nm">배송중</div><div class="de">답례품이 배송 중입니다. 송장번호로 위치를 확인할 수 있습니다.</div></div></div>
+          <div class="sg"><div class="ic">5</div><div><div class="nm">배송완료</div><div class="de">답례품이 배송지에 도착했습니다. 수령 후 수령확정을 진행해 주세요.</div></div></div>
+        </div></div></div>
+      <div class="sec"><div class="dot">7</div><div class="block"><div class="head"><h2>취소/반품/교환 안내</h2></div>
+        <div style="font-size:11px;color:#555;line-height:1.65;"><b>취소</b> 기부 후 취소 불가.<br><b>반품·교환</b> 답례품 불가, 하자·오배송은 1:1문의·1899-0522.</div></div></div>
+      <div class="sec"><div class="dot">8</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
+      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt on"><span class="i">👤</span>마이</a></div>
+    </div>
+    <div class="desc-col"><div class="desc"><h3>Description — MY-01 (MO · 빈)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2·4·5</td><td class="area">빈 상태</td><td><span class="badge b-fix">확정</span>기부액 0·카운트 0·최근 기부/주문 빈 상태 + CTA. 하단 안내 동일.</td></tr></table></div></div>
   </div>
 </div>
 
@@ -513,242 +548,26 @@
     <div class="plabel"><span class="id">SG-02</span> 지정기부 상세 (모금) <small>MO · 기부사업 §모금 카드 / EV-02 [기부하기] → 이 화면 · 데이터=e음 API</small></div>
     <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 <span class="st prog">개편중</span> <b>2026-06-27</b> <span class="who">(e음 상세 실측)</span></span><span class="it">디자인 <span class="st wait">대기</span> <span class="who">공석환 과장</span> · 퍼블 <span class="st wait">대기</span> <span class="who">P2</span></span><span class="it">기능 매핑 <span class="st wait">대기</span> <span class="who">e음 donationDetail</span></span></div>
     <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
+      <div class="sec"><div class="dot">1</div><div class="hd"><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
       <div class="sec"><div class="dot">2</div><div class="block">
-        <div class="sgfeat"><div class="fimg">대표 이미지 (e음 등록)</div><div class="fbody"><span class="ftag">광주 서구 · 지정기부</span><div class="fttl smp">천사기저귀 지원 모금<sup>예시</sup></div><div class="fdesc smp">출산세대 기저귀 바우처 — 7월말 의회승인 후 등록 예정.<sup>예시</sup></div><div class="track"><i style="width:0%"></i></div><div class="fmeta"><span><b class="fpct">모금 예정</b> · <span class="smp">7월말 등록<sup>예시·e음</sup></span></span><span class="smp">의회승인 후<sup>예시</sup></span></div><div class="fbtn">이 사업에 기부하기 →</div></div></div>
-        <div class="note" style="font-size:10.5px;color:var(--sub);margin-top:6px;"><b style="color:#b5651d;">[6/30]</b> 샘플을 천원세탁(모금 완료)→천사기저귀(7월말 등록 예정)로 교체. e음 등록 전엔 [기부하기] 비활성.</div>
+        <div class="sgfeat"><div class="fimg">대표 이미지 (e음 등록)</div><div class="fbody"><span class="ftag">광주 서구 · 지정기부</span><div class="fttl smp">천원세탁 모금<sup>샘플</sup></div><div class="fdesc smp">거동이 불편한 이웃에게 깨끗한 일상을.<sup>샘플</sup></div><div class="track"><i style="width:40%"></i></div><div class="fmeta"><span><b class="fpct smp">40%</b> · <span class="smp">2,000만/5,000만<sup>샘플·e음</sup></span></span><span class="smp">D-60<sup>샘플</sup></span></div><div class="fbtn">이 사업에 기부하기 →</div></div></div>
       </div></div>
-      <div class="sec"><div class="dot">3</div>
-        <div class="tabs"><div class="tb on">사업소개</div><div class="tb">기부내역</div><div class="tb">응원하기</div></div>
-        <div class="tabbody"><div class="ditmg">📷 사업소개 이미지 (e음 등록 1장)</div>
-        <div class="note" style="font-size:11px;color:var(--sub);">⚠️ 사업소개=지자체가 <b>e음 업로드한 이미지 1장</b>(우리 BO 수정 불가). 풍부한 이야기는 <b>기부사업 상세(EV-02)</b>가 텍스트로 담당. 이 모금화면=e음 소개+모금·참여.</div></div>
-      </div>
-      <div class="sec"><div class="dot">4</div><div class="tabbody" style="border-top:0;"><h3 style="font-size:13px;font-weight:800;margin-bottom:8px;">기부내역</h3><div class="qna"><div class="qrow"><span class="st smp">2분 전<sup>샘플</sup></span><span class="smp">김○○</span><span style="margin-left:auto;font-weight:700;" class="smp">10만원<sup>샘플</sup></span></div><div class="qrow"><span class="st smp">1시간 전<sup>샘플</sup></span><span class="smp">익명</span><span style="margin-left:auto;font-weight:700;" class="smp">5만원<sup>샘플</sup></span></div></div></div></div>
-      <div class="sec"><div class="dot">5</div><div class="cheer"><div class="ch-head">응원하기 <span class="ch-note">✍ 기부완료 시 한 마디</span></div><div class="ch-item"><span class="bell">💬</span><span class="time smp">방금<sup>샘플</sup></span><span class="msg smp">“좋은 일에 보탬이 되길.”<sup>샘플</sup></span></div></div></div>
-      <div class="sec"><div class="dot">6</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
-      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>상품검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
-    </div>
-    <div class="desc-col"><div class="desc"><h3>Description — SG-02 지정기부 상세(모금) (MO)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2</td><td class="area">모금 현황</td><td><span class="badge b-fix">확정</span>달성률·모금액/목표·D-day·[기부하기]. 수치=e음 API 단일소스→PA(지정기부).</td></tr><tr><td class="n">3</td><td class="area">사업소개 탭</td><td><span class="badge b-fix">확정</span>e음 업로드 이미지 1장 그대로. <b>BO 수정 불가.</b></td></tr><tr><td class="n">4·5</td><td class="area">기부내역·응원</td><td><span class="badge b-fix">확정</span>참여자(마스킹)·응원 메시지.</td></tr><tr><td class="n">—</td><td class="area">★EV-02와 구분</td><td><span class="badge b-open">기획</span><b>SG-02=e음 모금</b>(이미지·기부하기,수정불가)/<b>EV-02=BO 이야기</b>(텍스트,수정가능). 진입: 모금 카드/EV-02 [기부하기]→SG-02.</td></tr></table></div></div>
-  </div>
-</div>
-
-<!-- PAGE · EV-02 통합형 기부사업 상세 (MO) — 천원세탁 (이야기+모금 일체 · B안) -->
-<div class="pageblock p-event">
-  <div class="inner">
-    <div class="plabel"><span class="id">EV-02</span> 기부사업 상세 <b style="color:#b5651d;">통합형(B안) · 집행형</b> (천원세탁) <small>MO · 6/30 답신: 모금완료→집행형(§모금 위젯→집행 성과, 기부하기·기부내역/응원 제외)</small></div>
-    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 <span class="st prog">집행형 전환</span> <b>2026-06-30</b> <span class="who">(주무관 답신)</span></span><span class="it">디자인 <span class="st wait">대기</span> · 퍼블 <span class="st wait">대기</span></span></div>
-    <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
-      <div class="sec"><div class="dot">2</div><div class="block">
-        <div class="crumb" style="font-size:11.5px;">기부사업 › 천원세탁 <span class="gov">🟢 집행중·모금완료</span></div>
-        <div class="evhero" style="min-height:150px;margin-top:8px;"><span class="tag">천원세탁 대표 이미지 (실사진 확보)</span><div class="t" style="font-size:16px;">천원세탁 — 천원의 깨끗한 일상</div></div>
-        <div class="block" style="border:2px solid #2e7d4f;border-radius:10px;background:#eef4ef;padding:13px 14px;margin-top:12px;"><div class="head"><h2 style="font-size:14px;">모금 완료 · 집행 성과</h2><span class="s" style="font-size:10.5px;">2025 모금완료 → 2026 집행중</span></div>
-          <div style="display:flex;align-items:center;gap:8px;margin:8px 0;"><span style="font-size:16px;font-weight:800;color:#2e7d4f;">모금 100% 완료</span><span class="smp" style="font-size:10px;">e음 52%+위기브·웰로 48%</span></div>
-          <div class="track" style="margin:0 0 8px;"><i style="width:100%;background:#2e7d4f;"></i></div>
-          <div class="fmeta" style="font-size:11px;"><span>이용 건당 1,000원 · 월 5만원 한도 · 월 3회</span></div>
-          <div class="fbtn" style="margin-top:10px;background:#fff;color:var(--ink);border:1px solid var(--line);">답례품 보러가기 →</div>
-          <div class="note" style="font-size:10.5px;"><b style="color:#b5651d;">[6/30]</b> 모금 완료된 집행 사업이라 §모금 위젯 자리가 ‘집행 성과’로, [기부하기] 없음. 참여는 답례품 기부로 안내.</div>
+      <div class="sec"><div class="dot">3</div><div class="block">
+        <div class="sgtab"><span class="t on">사업소개</span><span class="t">기부내역</span><span class="t">응원하기</span></div>
+        <!-- 탭① 사업소개 (기본 노출) -->
+        <div class="sgpanel"><div class="ditmg">📷 사업소개 이미지 (e음 등록 1장)</div>
+          <div class="note" style="font-size:11px;color:var(--sub);">⚠️ 사업소개=지자체가 <b>e음 업로드한 이미지 1장</b>(우리 BO 수정 불가). 풍부한 이야기는 <b>기부사업 상세(EV-02)</b>가 텍스트로 담당. 이 모금화면=e음 소개+모금·참여.</div>
         </div>
-        <div class="block" style="margin-top:12px;"><div class="head"><h2 style="font-size:14px;">사업 개요·내용</h2><span class="s" style="font-size:10.5px;">BO 콘텐츠(김희선 2026 안내문)</span></div>
-          <div class="notice" style="font-size:11.5px;">· 대상: 서구 거주 중증장애인 · 제공: 광주서구상무지역자활센터 화이트세탁<br>· 방문수거→세탁·건조·보관→배송(약 1주일), 본인부담 건당 1,000원·월 5만원 한도·월 3회<br>· 품목단가: 셔츠/스웨터 2,000원~·경량점퍼 4,000원~·오리털/코트 5,000원~·이불 13,000원~·운동화 5,000원~<br>· <b>고향사랑기부로 모금 완료 → 2026 집행 중</b></div>
-        </div>
+        <!-- 탭② 기부내역 (전환 시 노출) -->
+        <div class="sgpanel alt"><span class="ptag">탭② 기부내역</span><div class="qna"><div class="qrow"><span class="st smp">2분 전<sup>샘플</sup></span><span class="smp">김○○</span><span style="margin-left:auto;font-weight:700;" class="smp">10만원<sup>샘플</sup></span></div><div class="qrow"><span class="st smp">1시간 전<sup>샘플</sup></span><span class="smp">익명</span><span style="margin-left:auto;font-weight:700;" class="smp">5만원<sup>샘플</sup></span></div></div></div>
+        <!-- 탭③ 응원하기 (전환 시 노출) -->
+        <div class="sgpanel alt"><span class="ptag">탭③ 응원하기</span><div class="cheer" style="margin-top:0;"><div class="ch-note" style="margin-bottom:8px;">✍ 기부완료 시 “응원 한 마디” 입력 → 목록 노출</div><div class="ch-item"><span class="bell">💬</span><span class="time smp">방금<sup>샘플</sup></span><span class="msg smp">“좋은 일에 보탬이 되길.”<sup>샘플</sup></span></div></div></div>
+        <div class="note" style="font-size:10.5px;color:var(--sub);margin-top:8px;">탭 전환 — 실제 화면은 선택 탭 <b>1개만 노출</b>. 사업소개=e음 이미지 / 기부내역·응원하기=집계·UGC. (PC·MO 동일)</div>
       </div></div>
-      <div class="sec"><div class="dot">3</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
-      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>상품검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
+      <div class="sec"><div class="dot">4</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
+      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
     </div>
-    <div class="desc-col"><div class="desc"><h3>Description — EV-02 통합형(B안)·집행형 천원세탁 (MO)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">—</td><td class="area">★성격 변경(6/30)</td><td><span class="badge b-fix">확정</span><b>모금형→집행형</b>(주무관 답신: 2025 모금완료·2026 집행중). §모금 위젯→집행 성과, [기부하기]·기부내역·응원 제외. CTA=답례품.</td></tr><tr><td class="n">—</td><td class="area">★A vs B</td><td><span class="badge b-open">택1</span><b>A 분리형</b>=이야기→[기부하기]→SG-02/<b>B 통합형(이 화면)</b>=한 페이지. 단 집행형이라 모금 위젯은 성과로 대체. 6/29 택1.</td></tr><tr><td class="n">모금형</td><td class="area">기저귀에만</td><td><span class="badge b-open">참고</span>진행바·[기부하기]·기부내역/응원이 있는 모금형은 <b>기저귀(7월말 등록)</b>에 적용.</td></tr></table></div></div>
-  </div>
-</div>
-
-<!-- PAGE · EV-02 통합형 기부사업 상세 (MO) — 천원국시 (집행형 · B안 변형) -->
-<div class="pageblock p-event">
-  <div class="inner">
-    <div class="plabel"><span class="id">EV-02</span> 기부사업 상세 <b style="color:#b5651d;">통합형(B안)</b> (천원국시) <small>MO · 집행형 — §모금 위젯 자리에 '집행 성과'+답례품 CTA</small></div>
-    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 <span class="st prog">비교안</span> <b>2026-06-27</b></span><span class="it">디자인 <span class="st wait">대기</span> · 퍼블 <span class="st wait">대기</span></span></div>
-    <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
-      <div class="sec"><div class="dot">2</div><div class="block">
-        <div class="crumb" style="font-size:11.5px;">기부사업 › 천원국시 <span class="gov">🟢 진행중·집행형</span></div>
-        <div class="evhero" style="min-height:150px;margin-top:8px;"><span class="tag">천원국시 대표 이미지</span><div class="t" style="font-size:16px;">천원국시 — 천원의 한 끼</div></div>
-        <div class="block" style="border:2px solid var(--accent);border-radius:10px;background:#eef0f2;padding:13px 14px;margin-top:12px;"><div class="head"><h2 style="font-size:14px;">집행 성과</h2><span class="s" style="font-size:10.5px;">📊 집행형 — 모금 객체 없음</span></div>
-          <div class="stats" style="margin:6px 0;"><div class="stat"><b class="smp">10호점</b><span>운영 중</span></div><div class="stat"><b>3개점</b><span>기부금 개소</span></div><div class="stat"><b>1,000원</b><span>국수 한 그릇</span></div></div>
-          <div class="dpromo" style="margin-top:10px;"><div><h3 style="font-size:13px;">함께 이어가요</h3><p style="font-size:11px;">광주 서구 고향사랑기부로 만들어가는 사업입니다. 답례품(일반기부)·지정기부로 함께해요.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><div class="btn">답례품 →</div><div class="btn" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);">지정기부 →</div></div></div>
-          <div class="note" style="font-size:10.5px;">🔗 집행형은 [기부하기]=답례품/일반기부 유도(e음 모금 아님). <b>B 통합 템플릿 동일</b>, §모금만 조건부 분기(천원세탁=모금 위젯↔천원국시=집행 성과).</div>
-        </div>
-        <div class="block" style="margin-top:12px;"><div class="head"><h2 style="font-size:14px;">사업 개요</h2><span class="s" style="font-size:10.5px;">BO 콘텐츠(광주 서구청)</span></div>
-          <div class="notice" style="font-size:11.5px;">· 우리밀 국수 1,000원 + 어르신 일자리<br>· <b>7·8·10호점이 고향사랑기부금으로 개소</b><br>· 1호점(2023.3)~현재 10호점 운영</div>
-        </div>
-        <div class="block" style="margin-top:12px;"><div class="head"><h2 style="font-size:14px;">영상</h2></div>
-          <div class="grid3"><div class="ccard"><div class="cimg">▶</div><div class="cbody"><span class="ctype vid">영상</span><div class="ctitle" style="font-size:12px;">7호점 개소</div></div></div><div class="ccard"><div class="cimg">▶</div><div class="cbody"><span class="ctype vid">영상</span><div class="ctitle" style="font-size:12px;">10호점 개소</div></div></div></div>
-        </div>
-      </div></div>
-      <div class="sec"><div class="dot">3</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
-      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>상품검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
-    </div>
-    <div class="desc-col"><div class="desc"><h3>Description — EV-02 통합형(B안) 천원국시 (MO)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">—</td><td class="area">★집행형 인스턴스</td><td><span class="badge b-open">템플릿</span>천원세탁(모금형)과 동일 B 통합 템플릿, §모금만 분기: 모금 위젯↔집행 성과(달성률·기부하기 없음).</td></tr><tr><td class="n">성과</td><td class="area">CTA</td><td><span class="badge b-fix">확정</span>답례품/일반기부 유도(e음 모금 아님). 10호점·3개점 기부금 개소.</td></tr></table></div></div>
-  </div>
-</div>
-
-<!-- PAGE · EV-02 통합형 기부사업 상세 (MO) — 천원택시 (집행형 · B안 변형) -->
-<div class="pageblock p-event">
-  <div class="inner">
-    <div class="plabel"><span class="id">EV-02</span> 기부사업 상세 <b style="color:#b5651d;">통합형(B안)</b> (천원택시) <small>MO · 집행형 — §모금 위젯 자리에 '집행 성과'+답례품 CTA</small></div>
-    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 <span class="st prog">비교안</span> <b>2026-06-27</b></span><span class="it">디자인 <span class="st wait">대기</span> · 퍼블 <span class="st wait">대기</span></span></div>
-    <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
-      <div class="sec"><div class="dot">2</div><div class="block">
-        <div class="crumb" style="font-size:11.5px;">기부사업 › 천원택시 <span class="gov">🟢 진행중·집행형</span></div>
-        <div class="evhero" style="min-height:150px;margin-top:8px;"><span class="tag">천원택시 대표 이미지</span><div class="t" style="font-size:16px;">천원택시 — 병원길 1,000원</div></div>
-        <div class="block" style="border:2px solid var(--accent);border-radius:10px;background:#eef0f2;padding:13px 14px;margin-top:12px;"><div class="head"><h2 style="font-size:14px;">집행 성과</h2><span class="s" style="font-size:10.5px;">📊 집행형 — 모금 객체 없음</span></div>
-          <div class="stats" style="margin:6px 0;"><div class="stat"><b>3억원</b><span>기부금 편성(10배)</span></div><div class="stat"><b class="smp">319명</b><span>이용 대상</span></div><div class="stat"><b>1,000원</b><span>본인부담</span></div></div>
-          <div class="dpromo" style="margin-top:10px;"><div><h3 style="font-size:13px;">기부가 일상이 됩니다</h3><p style="font-size:11px;">광주 서구 고향사랑기부로 만들어가는 사업입니다. 답례품(일반기부)·지정기부로 함께해요.</p></div><div style="display:flex;gap:8px;flex-wrap:wrap;"><div class="btn">답례품 →</div><div class="btn" style="background:transparent;color:#fff;border:1px solid rgba(255,255,255,.55);">지정기부 →</div></div></div>
-          <div class="note" style="font-size:10.5px;">🔗 집행형은 [기부하기]=답례품/일반기부 유도(e음 모금 아님). <b>B 통합 템플릿 동일</b>, §모금만 조건부 분기.</div>
-        </div>
-        <div class="block" style="margin-top:12px;"><div class="head"><h2 style="font-size:14px;">사업 개요·내용</h2><span class="s" style="font-size:10.5px;">BO 콘텐츠(광주 서구청)</span></div>
-          <div class="notice" style="font-size:11.5px;">· 거동 불편 이웃 병원길 교통비, 본인부담 <b>1,000원</b><br>· <b>기부금 3억원 편성(전년比 10배)</b>로 규모 확대<br>· 광주빛고을콜택시 연계 · 대상 확대</div>
-        </div>
-      </div></div>
-      <div class="sec"><div class="dot">3</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
-      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>상품검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
-    </div>
-    <div class="desc-col"><div class="desc"><h3>Description — EV-02 통합형(B안) 천원택시 (MO)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">—</td><td class="area">★집행형 인스턴스</td><td><span class="badge b-open">템플릿</span>천원세탁(모금형)과 동일 B 통합 템플릿, §모금만 분기: 모금 위젯↔집행 성과.</td></tr><tr><td class="n">성과</td><td class="area">CTA</td><td><span class="badge b-fix">확정</span>답례품/일반기부 유도. 기부금 3억(10배)·1,000원 본인부담.</td></tr></table></div></div>
-  </div>
-</div>
-
-<!-- PAGE · EV-02 통합형 기부사업 상세 (MO) — 기저귀 (모금형·모금 미시작 · B안 변형) -->
-<div class="pageblock p-event">
-  <div class="inner">
-    <div class="plabel"><span class="id">EV-02</span> 기부사업 상세 <b style="color:#b5651d;">통합형(B안)</b> (기저귀) <small>MO · 모금형·모금 미시작 — 모금 위젯 '예정/비활성'(8월) · 타이밍 디커플링</small></div>
-    <div class="statusflag"><span class="ft">개발 상태</span><span class="it">기획 <span class="st prog">비교안</span> <b>2026-06-27</b></span><span class="it">콘텐츠 <span class="st wait">미수령</span> · 퍼블 <span class="st wait">대기</span></span></div>
-    <div class="device">
-      <div class="sec"><div class="dot">1</div><div class="hd"><span class="ham">≡</span><div class="logo">고향온 <span>| 서구</span></div><div class="sp"></div><div class="icons"><span>🔍</span></div></div></div>
-      <div class="sec"><div class="dot">2</div><div class="block">
-        <div class="crumb" style="font-size:11.5px;">기부사업 › 기저귀 지원 <span class="gov" style="background:#9aa0a6;">🟡 모금 예정·지정기부</span></div>
-        <div class="evhero" style="min-height:150px;margin-top:8px;"><span class="tag">기저귀 지원 대표 이미지</span><div class="t smp" style="font-size:15px;">기저귀 지원 — 사업명 확정 전<sup>샘플</sup></div></div>
-        <div class="block" style="border:2px dashed var(--accent);border-radius:10px;background:#f4f5f6;padding:13px 14px;margin-top:12px;"><div class="head"><h2 style="font-size:14px;">모금 현황 <span style="font-size:10.5px;color:#9aa0a6;">(준비 중)</span></h2><span class="s" style="font-size:10.5px;">🟡 7월말 의회승인 후 모금 시작 예정</span></div>
-          <div class="track" style="margin:10px 0 6px;opacity:.4;"><i style="width:0%"></i></div>
-          <div class="fmeta"><span style="color:#9aa0a6;">모금 시작 전 · 미표시</span><span class="smp">D-DAY 미정<sup>예시</sup></span></div>
-          <div class="fbtn" style="margin-top:10px;background:#c4c7cd;color:#fff;cursor:default;">🔔 모금 시작 알림 신청</div>
-          <div class="note" style="font-size:10.5px;">🔗 <b>타이밍 디커플링</b>: 모금형이나 e음 미등록 → [기부하기] 비활성. 이야기는 먼저 게시, 모금 버튼은 <b>7월 의회 추가경정 심의 통과(7월말경) 후 e음 등록</b>되면 활성화(모금형 위젯으로 전환). <span class="smp">의회승인 시 주무관 연락 예정.</span></div>
-        </div>
-        <div class="block" style="margin-top:12px;"><div class="head"><h2 style="font-size:14px;">사업 개요·내용</h2><span class="s" style="font-size:10.5px;color:#b5651d;">⚠️ 김희선 자료 미수령 — 골격(샘플)</span></div>
-          <div class="notice smp" style="font-size:11.5px;">· 유형: 지정기부(모금형) · 기저귀 지원(천사기저귀)<br>· 대상·내용·근거 — 자료 수령 후 확정<br>· 모금 시작: <b>7월말 의회승인 후 등록 예정</b><sup>예시</sup></div>
-        </div>
-        <div class="block" style="margin-top:12px;"><div class="head"><h2 style="font-size:14px;">기부내역·응원</h2></div>
-          <div class="emptybox" style="font-size:11.5px;">모금 시작 전 — <b>7월말 모금 개시 후</b> 표시됩니다.</div>
-        </div>
-      </div></div>
-      <div class="sec"><div class="dot">3</div><div class="footer"><div class="ftop"><b>개인정보처리방침</b><span>이용약관</span><span>공지사항</span></div><div class="cols"><div class="info"><div class="logo2">ⓔ 제너두</div>서울특별시 강남구 강남대로 556 16층<br>사업자등록번호 104-81-56237<span class="cpr">COPYRIGHT ⓒ 이제너두(주)</span></div><div class="cs"><div class="csnum">고객센터 1899-0522</div><div class="hours">평일 09:00-18:00</div></div></div></div></div>
-      <div class="btmnav"><a class="bt"><span class="i">⊞</span>카테고리</a><a class="bt"><span class="i">🔍</span>상품검색</a><a class="bt"><span class="i">🏠</span>홈</a><a class="bt"><span class="i">🎁</span>답례품</a><a class="bt"><span class="i">👤</span>로그인</a></div>
-    </div>
-    <div class="desc-col"><div class="desc"><h3>Description — EV-02 통합형(B안) 기저귀 (MO)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">—</td><td class="area">★모금형·미시작</td><td><span class="badge b-open">상태</span>모금형이나 모금 미시작. <b style="color:#b5651d;">[6/30] 모금=7월말 의회승인 후 등록.</b> 타이밍 디커플링: 이야기 먼저, [기부하기]는 e음 등록 후 활성. <b>현 시점 유일한 모금형 사례</b>(천원세탁은 집행형 전환).</td></tr><tr><td class="n">개요</td><td class="area">콘텐츠</td><td><span class="badge b-open">미수령</span>김희선 자료 미수령 → 골격(샘플). 수령 후 확정.</td></tr></table></div></div>
-  </div>
-</div>
-
-
-<!-- =================================================================== -->
-<!-- [2026-06-30 추가] 팝업 검토 델타 — tier1~3 팝업 정책 반영 (MO · 5종)   -->
-<!-- =================================================================== -->
-
-<!-- COMPONENT · 비회원 로그인 유도 팝업 (MO) -->
-<div class="pageblock p-pay">
-  <div class="inner">
-    <div class="plabel" style="background:#39314a;"><span class="id" style="background:#7c5cbf;">공통</span> 비회원 로그인 유도 팝업 <small>MO · 비회원이 기부하기·마이 진입 시 · 신규(2026-06-30)</small></div>
-    <div class="popwrap" style="min-height:360px;">
-      <div style="position:absolute;inset:0;background:rgba(20,22,28,.55);display:flex;align-items:center;justify-content:center;padding:16px;">
-        <div class="recvbox" style="width:330px;">
-          <h3>로그인이 필요합니다</h3>
-          <p>기부(답례품 구매)는 <b>회원 전용</b> 기능입니다. 로그인 후 이용해 주세요. 회원이 아니시면 회원가입 후 본인인증을 거쳐 기부하실 수 있습니다.</p>
-          <div class="acts"><a>닫기</a><a class="primary">로그인</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="desc-col" style="font-size:12px;color:var(--sub);line-height:1.6;">📌 비회원이 회원 전용 기능 진입 시 노출. [로그인]→LO-01 / 회원가입→LO-02. 기부=회원 필수(고향온 회원 정책). MO는 페이지 이동 대신 <b>팝업 필수</b>.</div>
-  </div>
-</div>
-
-<!-- COMPONENT · 순수기부 금액입력 팝업 (MO) -->
-<div class="pageblock p-fund">
-  <div class="inner">
-    <div class="plabel" style="background:#39314a;"><span class="id" style="background:#7c5cbf;">공통</span> 순수기부 금액입력 팝업 (답례품 없이 기부) <small>MO · 기부사업·자치단체·집행형 '답례품 없이 기부' · 신규(2026-06-30)</small></div>
-    <div class="popwrap" style="min-height:520px;">
-      <div style="position:absolute;inset:0;background:rgba(20,22,28,.55);display:flex;align-items:center;justify-content:center;padding:16px;">
-        <div class="recvbox" style="width:340px;text-align:left;">
-          <h3 style="text-align:center;">기부 금액 입력</h3>
-          <p style="text-align:center;">답례품 없이 순수 기부로 참여합니다.</p>
-          <label style="font-size:12.5px;color:var(--sub);display:block;margin:16px 0 8px;">빠른 선택</label>
-          <div class="payselect"><span class="p">1만</span><span class="p on">3만</span><span class="p">5만</span><span class="p">10만</span></div>
-          <input class="lpf" style="margin:12px 0 0;" placeholder="직접 입력 (원)">
-          <div class="limitbox" style="margin-top:13px;">ℹ️ <b>답례품이 증정되지 않는 순수 기부금</b>입니다.</div>
-          <div style="font-size:11px;color:var(--sub);line-height:1.6;margin-top:9px;">조회된 가능 금액에는 진행 중·납부확인중 금액이 포함되어 실제 가능 금액과 다를 수 있습니다.</div>
-          <div class="acts" style="margin-top:16px;"><a>취소</a><a class="primary">기부하기</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="desc-col" style="font-size:12px;color:var(--sub);line-height:1.6;">📌 적용=기부사업(모금형 SG)·자치단체(GU-01)·집행형 공통(2026-06-30). 정액(1/3/5/10만)+자유입력+한도연동+미증정 안내. [기부하기]→약관→한도조회→PA-2xx.</div>
-  </div>
-</div>
-
-<!-- COMPONENT · 거주지 기부불가 안내 모달 (MO) -->
-<div class="pageblock p-pay">
-  <div class="inner">
-    <div class="plabel" style="background:#39314a;"><span class="id" style="background:#7c5cbf;">공통</span> 거주지 기부불가 안내 모달 <small>MO · 본인 주소지 지자체 기부 차단 · 신규(2026-06-30 · alert→전용 모달)</small></div>
-    <div class="popwrap" style="min-height:340px;">
-      <div style="position:absolute;inset:0;background:rgba(20,22,28,.55);display:flex;align-items:center;justify-content:center;padding:16px;">
-        <div class="recvbox" style="width:330px;">
-          <h3>본 지자체에는 기부하실 수 없습니다</h3>
-          <p>법령에 따라 <b>본인의 주민등록상 주소지 지자체</b>에는 기부할 수 없습니다. 주소지가 <b>광주 서구</b>이면 광주 서구에는 제한되며, <b>다른 지자체</b>에는 정상 기부하실 수 있습니다.</p>
-          <div class="acts"><a class="primary">확인</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="desc-col" style="font-size:12px;color:var(--sub);line-height:1.6;">📌 주소조회 결과 본인 주소지 지자체일 때 → 기부 차단. 2026-06-30: alert→전용 모달 고도화(차단 유지+사유 명시). 법령 근거.</div>
-  </div>
-</div>
-
-<!-- COMPONENT · 배송지 추가/수정 폼 팝업 (MO) -->
-<div class="pageblock p-my">
-  <div class="inner">
-    <div class="plabel" style="background:#39314a;"><span class="id" style="background:#7c5cbf;">공통</span> 배송지 추가/수정 폼 팝업 <small>MO · PA-01 결제·MY-03-1 배송지관리 '추가/수정' · 신규(2026-06-30)</small></div>
-    <div class="popwrap" style="min-height:600px;">
-      <div style="position:absolute;inset:0;background:rgba(20,22,28,.55);display:flex;align-items:center;justify-content:center;padding:16px;">
-        <div class="recvbox" style="width:340px;text-align:left;">
-          <h3 style="text-align:center;">배송지 추가</h3>
-          <div style="margin-top:14px;display:flex;flex-direction:column;gap:10px;">
-            <input class="lpf" style="margin-bottom:0;" placeholder="배송지명 (예: 집, 회사)">
-            <div style="display:flex;gap:8px;"><input class="lpf" style="margin-bottom:0;flex:1;" placeholder="받는 분"><input class="lpf" style="margin-bottom:0;flex:1.2;" placeholder="휴대폰 번호"></div>
-            <div style="display:flex;gap:8px;"><input class="lpf" style="margin-bottom:0;flex:1;" placeholder="우편번호" readonly><a style="border:1px solid var(--accent);color:var(--accent);border-radius:8px;padding:0 14px;display:flex;align-items:center;font-weight:700;font-size:12.5px;white-space:nowrap;">주소 검색</a></div>
-            <input class="lpf" style="margin-bottom:0;" placeholder="기본 주소 (자동)" readonly>
-            <input class="lpf" style="margin-bottom:0;" placeholder="상세 주소 입력">
-            <input class="lpf" style="margin-bottom:0;" placeholder="배송 메모 (선택)">
-            <div style="display:flex;align-items:center;gap:9px;font-size:13px;"><span class="chk">✓</span> 기본 배송지로 설정</div>
-          </div>
-          <div class="limitbox" style="margin-top:12px;">ℹ️ <b>거주지(기부 자격)와 달라도 됩니다</b>. 잘못 입력 시 오배송 책임은 회원에게 있습니다.</div>
-          <div class="acts" style="margin-top:14px;"><a>취소</a><a class="primary">저장</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="desc-col" style="font-size:12px;color:var(--sub);line-height:1.6;">📌 주소검색=카카오맵. 거주지≠배송지 허용(2026-06-15)·오배송 책임=회원. 기본 배송지 1개. 수정 시 동일 폼(프리필).</div>
-  </div>
-</div>
-
-<!-- COMPONENT · 주소지·기부 한도 조회 팝업 [수정본] (MO) -->
-<div class="pageblock p-pay">
-  <div class="inner">
-    <div class="plabel" style="background:#39314a;"><span class="id" style="background:#7c5cbf;">공통</span> 주소지·기부 한도 조회 팝업 <b style="color:#ffd27c;">[수정본]</b> <small>MO · 한도초과 전액차단 안내 추가(2026-06-30)</small></div>
-    <div class="popwrap" style="min-height:540px;">
-      <div style="position:absolute;inset:0;background:rgba(20,22,28,.55);display:flex;align-items:center;justify-content:center;padding:16px;">
-        <div class="recvbox" style="width:340px;text-align:left;">
-          <h3 style="text-align:center;">주소지 · 기부 한도 조회</h3>
-          <p style="text-align:center;">행안부 고향사랑e음을 통해 조회됩니다.</p>
-          <div style="display:flex;align-items:center;gap:6px;margin-top:14px;"><input class="lpf" style="margin-bottom:0;flex:1;" placeholder="앞 6자리"><span>-</span><input class="lpf" style="margin-bottom:0;flex:1.2;" type="password" placeholder="뒤 7자리"></div>
-          <div style="background:#eef0f2;border:1px solid var(--line);border-radius:10px;padding:13px;margin-top:13px;font-size:12.5px;line-height:1.6;"><b style="color:#2e7d4f;">✓ 기부 가능 (상태①)</b><br>연간 한도 20,000,000원 · 잔여 <b class="smp">19,900,000원<sup>샘플</sup></b><br><span style="font-size:11px;color:var(--sub);">가능 금액에는 진행 중·납부확인중 금액 포함, 실제와 다를 수 있음.</span></div>
-          <div style="background:#fbeeec;border:1px solid #e3b3ad;border-radius:10px;padding:13px;margin-top:10px;font-size:12px;line-height:1.6;"><b style="color:#b3261e;">⚠ 한도 초과 — 기부 불가 (상태②)</b><br><span style="color:#7a2018;">한도를 초과했습니다. 진행 중·취소된 결제 금액이 일시 반영됐을 수 있습니다. 잠시 후 다시 시도하거나 고객센터로 문의해 주세요.</span></div>
-          <div class="acts" style="margin-top:14px;"><a>닫기</a><a class="primary">조회</a></div>
-        </div>
-      </div>
-    </div>
-    <div class="desc-col" style="font-size:12px;color:var(--sub);line-height:1.6;">📌 [수정본] 2026-06-30: 한도 초과 시 <b>전액 차단+안내</b>(부분기부 불가). ①가능·②초과 2상태. 거주지 불가는 별도 모달. 주민번호 미저장. 한도 2천만원.</div>
+    <div class="desc-col"><div class="desc"><h3>Description — SG-02 지정기부 상세(모금) (MO)</h3><table class="d"><tr><th class="n">#</th><th class="area">영역</th><th>설명</th></tr><tr><td class="n">2</td><td class="area">모금 현황</td><td><span class="badge b-fix">확정</span>달성률·모금액/목표·D-day·[기부하기]. 수치=e음 API 단일소스→PA(지정기부).</td></tr><tr><td class="n">3</td><td class="area">★탭(사업소개/기부내역/응원하기)</td><td><span class="badge b-fix">확정 2026-06-30</span><b>진짜 탭 — 1개만 노출</b>(PC·MO 동일). 사업소개=e음 업로드 이미지 1장(BO 수정 불가) / 기부내역=참여자(마스킹) / 응원하기=응원 메시지. (기존 탭+별도 응원섹션 중복 정리)</td></tr><tr><td class="n">—</td><td class="area">★EV-02와 구분</td><td><span class="badge b-open">기획</span><b>SG-02=e음 모금</b>(이미지·기부하기,수정불가)/<b>EV-02=BO 이야기</b>(텍스트,수정가능). 진입: 모금 카드/EV-02 [기부하기]→SG-02.</td></tr></table></div></div>
   </div>
 </div>
 
